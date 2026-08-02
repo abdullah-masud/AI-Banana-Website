@@ -1,6 +1,7 @@
 import { Navbar } from './components/Navbar'
 import { Benefits, Challenge } from './sections/BenefitsChallenge'
 import { FinalCta, Footer } from './sections/FinalCtaFooter'
+import { FounderStory } from './sections/FounderStory'
 import { Hero } from './sections/Hero'
 import { Industries, Process } from './sections/ProcessIndustries'
 import { Problem, Solution } from './sections/ProblemSolution'
@@ -21,6 +22,7 @@ export function App() {
         <Industries />
         <Workforce />
         <WhyUs />
+        <FounderStory />
         <Testimonials />
         <FinalCta />
       </main>

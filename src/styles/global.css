@@ -258,6 +258,25 @@ img { max-width: 100%; display: block; }
 .why-list strong { color: var(--navy); font-size: .9rem; }
 .why-list p { margin: 5px 0 0; color: var(--muted); font-size: .79rem; line-height: 1.55; }
 
+/* Founder story */
+.founder-story { overflow: hidden; background: var(--white); }
+.founder-story::before { content: ''; position: absolute; width: 420px; height: 420px; left: -260px; bottom: -250px; border-radius: 50%; background: radial-gradient(circle,rgba(222,160,27,.1),transparent 68%); }
+.founder-story__grid { position: relative; display: grid; grid-template-columns: .82fr 1.18fr; align-items: center; gap: 90px; }
+.founder-story__heading h2 { max-width: 470px; margin: 0; color: var(--dark-navy); font-size: clamp(2.6rem,5vw,4.45rem); line-height: 1.02; letter-spacing: -.06em; font-weight: 600; }
+.founder-story__principles { display: flex; flex-direction: column; align-items: flex-start; gap: 13px; margin-top: 35px; }
+.founder-story__principles span { display: inline-flex; align-items: center; gap: 10px; color: #556177; font-size: .8rem; }
+.founder-story__principles svg { width: 16px; color: var(--gold); }
+.founder-story__card { position: relative; padding: 54px 58px; border: 1px solid #dfe4eb; border-radius: 22px; background: linear-gradient(145deg,#fff,#f8fafc); box-shadow: 0 28px 65px rgba(3,29,77,.09); }
+.founder-story__card::after { content: ''; position: absolute; inset: 12px -12px -12px 12px; z-index: -1; border: 1px solid rgba(222,160,27,.36); border-radius: 22px; }
+.founder-story__quote { width: 34px; height: 34px; margin-bottom: 26px; color: var(--gold); }
+.founder-story__body { margin: 0; color: var(--navy); font-size: clamp(1.15rem,2vw,1.42rem); line-height: 1.65; letter-spacing: -.02em; }
+.founder-story__closing { margin: 24px 0 0; color: var(--muted); font-size: .9rem; line-height: 1.7; }
+.founder-story__signature { display: flex; align-items: center; gap: 13px; margin-top: 32px; padding-top: 25px; border-top: 1px solid #e3e7ed; }
+.founder-story__signature > span { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; color: #7b520b; background: var(--light-gold); font-size: .75rem; font-weight: 700; }
+.founder-story__signature strong,.founder-story__signature small { display: block; }
+.founder-story__signature strong { color: var(--navy); font-size: .82rem; }
+.founder-story__signature small { margin-top: 2px; color: #7a8598; font-size: .7rem; }
+
 /* Testimonials */
 .testimonials-section { background: white; }
 .testimonial-placeholder { max-width: 900px; margin: 0 auto; padding: 44px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 26px; border: 1px dashed #cfd6e1; border-radius: 18px; background: #fafbfc; }
@@ -345,6 +364,11 @@ img { max-width: 100%; display: block; }
   .why-grid { grid-template-columns: 1fr; }
   .why-visual { max-width: 570px; margin: 0 auto; }
   .why-copy { grid-row: 1; }
+  .founder-story__grid { grid-template-columns: 1fr; gap: 55px; }
+  .founder-story__heading { text-align: center; }
+  .founder-story__heading .eyebrow { justify-content: center; }
+  .founder-story__heading h2 { margin-inline: auto; }
+  .founder-story__principles { flex-direction: row; justify-content: center; align-items: center; flex-wrap: wrap; }
   .testimonial-placeholder { grid-template-columns: auto 1fr; }
   .testimonial-placeholder__badges { grid-column: 2; justify-content: flex-start; }
   .footer__top { grid-template-columns: 1.4fr 1fr; }
@@ -403,6 +427,9 @@ img { max-width: 100%; display: block; }
   .why-visual__panel h3 { font-size: 1.7rem; }
   .why-visual__outline { inset: 0 0 14px 15px; }
   .why-visual__footer { gap: 12px; flex-wrap: wrap; }
+  .founder-story__card { padding: 35px 28px; }
+  .founder-story__card::after { inset: 8px -8px -8px 8px; }
+  .founder-story__principles { align-items: flex-start; flex-direction: column; }
   .testimonial-placeholder { padding: 28px; grid-template-columns: 1fr; text-align: center; }
   .testimonial-placeholder > svg { margin: 0 auto; }
   .testimonial-placeholder__badges { grid-column: 1; justify-content: center; }

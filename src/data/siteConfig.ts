@@ -99,6 +99,15 @@ export const siteConfig = {
     { title: 'Built as a team, not a tool', description: 'Each AI Employee has a clear role and works with the rest of your operation.' },
     { title: 'Supported by real strategists', description: 'We stay involved from first conversation through launch and optimisation.' },
   ],
+  founderStory: {
+    eyebrow: 'The story behind the name',
+    title: 'Why the Name AI Banana?',
+    body: '“Banana” began as a family nickname—short for “Bad Nana”—earned by founder Shayla Davis because she never does anything halfway. It captures the same standard she brings to every client: show up early, notice what needs attention, and make hard things simpler.',
+    closing: 'That is the AI Banana promise: thoughtful support, handled before it becomes a problem.',
+    founder: 'Shayla Davis',
+    role: 'Founder, AI Banana',
+    principles: ['Show up early', 'Notice what matters', 'Make hard things simpler'],
+  },
 } as const
 
 export type IconName =
