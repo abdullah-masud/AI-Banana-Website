@@ -26,7 +26,7 @@ export function Benefits() {
 
 export function Challenge() {
   return (
-    <section className="section challenge-section">
+    <section className="section challenge-section" id="demo-phone">
       <div className="container challenge-grid">
         <Reveal className="challenge-phone-wrap">
           <div className="phone-mockup">
@@ -37,7 +37,11 @@ export function Challenge() {
               <h3>AI Receptionist</h3>
               <p>Ready to take your call</p>
               <div className="voice-wave" aria-hidden="true">{Array.from({ length: 17 }, (_, i) => <i key={i} />)}</div>
-              <a href={siteConfig.links.demoPhone} className="phone-mockup__call" aria-label="Call the AI Receptionist"><PhoneCall fill="currentColor" /></a>
+              {siteConfig.links.demoPhone ? (
+                <a href={siteConfig.links.demoPhone} className="phone-mockup__call" aria-label="Call the AI Receptionist"><PhoneCall fill="currentColor" /></a>
+              ) : (
+                <span className="phone-mockup__call phone-mockup__call--disabled" aria-label="Demo phone number coming soon"><PhoneCall fill="currentColor" /></span>
+              )}
               <small>{siteConfig.contact.demoPhone}</small>
             </div>
           </div>

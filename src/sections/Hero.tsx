@@ -24,7 +24,7 @@ export function Hero() {
         </div>
         <div className="hero__visual" aria-label="AI Banana workforce officer">
           <div className="hero__image-shell">
-            <img src={siteConfig.assets.heroCharacter} alt="AI Banana, a professional AI Workforce Officer" />
+            <img src={siteConfig.assets.heroCharacter} alt="AI Banana, a professional AI Workforce Officer" width="820" height="1230" fetchPriority="high" decoding="async" />
             <div className="hero__status-card hero__status-card--top"><span className="status-pulse" /><div><small>AI Workforce</small><strong>Online & ready</strong></div></div>
             <div className="hero__status-card hero__status-card--bottom"><CheckCircle2 /><div><small>Task status</small><strong>Already handled.</strong></div></div>
           </div>

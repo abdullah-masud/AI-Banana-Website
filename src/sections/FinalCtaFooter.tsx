@@ -1,4 +1,5 @@
 import { ArrowUpRight, Facebook, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
+import type { ReactNode } from 'react'
 import { Button } from '../components/Button'
 import { Reveal } from '../components/Reveal'
 import { siteConfig } from '../data/siteConfig'
@@ -21,11 +22,17 @@ export function FinalCta() {
 }
 
 export function Footer() {
+  const placeholderLink = (label: string, href: string, icon: ReactNode) => href ? (
+    <a href={href}>{icon}{label}<ArrowUpRight className="footer__external" /></a>
+  ) : (
+    <span className="footer__placeholder" aria-label={`${label} link coming soon`}>{icon}{label}<small>Coming soon</small></span>
+  )
+
   return (
     <footer className="footer">
       <div className="container footer__top">
         <div className="footer__brand">
-          <a href="#home" aria-label="AI Banana home"><img src={siteConfig.assets.logo} alt="AI Banana" /></a>
+          <a href="#home" aria-label="AI Banana home"><img src={siteConfig.assets.logo} alt="AI Banana" width="900" height="311" loading="lazy" decoding="async" /></a>
           <p>{siteConfig.tagline}</p>
           <span>{siteConfig.supportingStatement}</span>
         </div>
@@ -35,19 +42,22 @@ export function Footer() {
         </div>
         <div className="footer__column">
           <h3>Contact</h3>
-          <a href="#contact"><Phone />{siteConfig.contact.phone}</a>
-          <a href={siteConfig.links.email}><Mail />{siteConfig.contact.email}</a>
+          <span className="footer__placeholder"><Phone />{siteConfig.contact.phone}</span>
+          {siteConfig.links.email ? <a href={siteConfig.links.email}><Mail />{siteConfig.contact.email}</a> : <span className="footer__placeholder"><Mail />{siteConfig.contact.email}</span>}
           <span><MapPin />{siteConfig.contact.location}</span>
         </div>
         <div className="footer__column">
           <h3>Connect</h3>
-          <a href={siteConfig.links.linkedin}><Linkedin />LinkedIn<ArrowUpRight className="footer__external" /></a>
-          <a href={siteConfig.links.facebook}><Facebook />Facebook<ArrowUpRight className="footer__external" /></a>
+          {placeholderLink('LinkedIn', siteConfig.links.linkedin, <Linkedin />)}
+          {placeholderLink('Facebook', siteConfig.links.facebook, <Facebook />)}
         </div>
       </div>
       <div className="container footer__bottom">
         <span>© {new Date().getFullYear()} AI Banana. All rights reserved.</span>
-        <div><a href={siteConfig.links.privacy}>Privacy</a><a href={siteConfig.links.terms}>Terms</a></div>
+        <div>
+          {siteConfig.links.privacy ? <a href={siteConfig.links.privacy}>Privacy</a> : <span>Privacy</span>}
+          {siteConfig.links.terms ? <a href={siteConfig.links.terms}>Terms</a> : <span>Terms</span>}
+        </div>
       </div>
     </footer>
   )

@@ -9,7 +9,6 @@ export function Process() {
     <section className="section process-section" id="how-it-works">
       <div className="container">
         <Reveal><SectionHeading eyebrow="How it works" title="From Busywork to Built-In." body="A clear, collaborative process that turns repetitive work into a dependable AI workforce." align="center" /></Reveal>
-        <div className="process-line" aria-hidden="true" />
         <div className="process-grid">
           {siteConfig.process.map((item, index) => (
             <Reveal key={item.step} className="process-step" delay={index * 90}>
@@ -38,7 +37,6 @@ export function Industries() {
             <Reveal key={item.title} className={`industry-card ${index === siteConfig.industries.length - 1 ? 'industry-card--wide' : ''}`} delay={Math.min(index * 55, 220)}>
               <Icon name={item.icon} />
               <h3>{item.title}</h3>
-              <ArrowRight size={18} />
             </Reveal>
           ))}
         </div>

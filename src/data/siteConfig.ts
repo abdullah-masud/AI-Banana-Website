@@ -13,12 +13,12 @@ export const siteConfig = {
   },
   links: {
     booking: '#contact',
-    demoPhone: 'tel:+10000000000',
-    email: 'mailto:hello@example.com',
-    linkedin: '#',
-    facebook: '#',
-    privacy: '#',
-    terms: '#',
+    demoPhone: '',
+    email: '',
+    linkedin: '',
+    facebook: '',
+    privacy: '',
+    terms: '',
   },
   contact: {
     phone: '[Phone number]',
