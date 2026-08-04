@@ -101,7 +101,7 @@ p { text-wrap: pretty; }
 .hero { min-height: 900px; overflow: hidden; position: relative; display: flex; align-items: center; padding: 142px 0 78px; background: linear-gradient(180deg, #fff 0%, #f5f9fd 68%, #fdfdfd 100%); }
 .hero__grid { display: grid; grid-template-columns: .96fr 1.04fr; align-items: center; gap: clamp(36px,4vw,58px); position: relative; z-index: 2; }
 .hero__copy { min-width: 0; padding-top: 14px; }
-.hero__brand-logo { width: 238px; height: auto; margin: 0 0 23px -6px; }
+.hero__brand-logo { width: 210px; height: auto; margin: 0 0 22px -5px; }
 .hero__kicker { color: var(--navy); font-size: .77rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 700; display: flex; align-items: center; gap: 11px; margin-bottom: 27px; }
 .hero__kicker-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 0 6px rgba(222,160,27,.12); }
 .hero h1 { margin: 0; color: var(--dark-navy); font-size: clamp(3.4rem, 6vw, 5.9rem); line-height: .955; letter-spacing: -.068em; font-weight: 600; }
@@ -430,7 +430,7 @@ p { text-wrap: pretty; }
   .navbar__brand img { width: 158px; }
   .mobile-menu { top: 68px; }
   .hero { padding: 116px 0 52px; }
-  .hero__brand-logo { width: min(215px,72vw); margin-bottom: 26px; }
+  .hero__brand-logo { width: min(190px,68vw); margin-bottom: 24px; }
   .hero h1 { max-width: 100%; font-size: clamp(2.6rem,11.5vw,3.35rem); letter-spacing: -.058em; }
   .hero__description { max-width: 100%; }
   .hero__description { font-size: .98rem; }
