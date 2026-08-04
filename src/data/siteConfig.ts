@@ -41,6 +41,14 @@ export const siteConfig = {
     secondaryLabel: 'Book Through Our AI Receptionist',
   },
   heroTasks: ['Call answered', 'Lead qualified', 'Appointment booked', 'CRM updated', 'Follow-up sent', 'Report prepared'],
+  heroActivation: {
+    taskTimings: [500, 1450, 2400, 2900, 3250, 3600],
+    completedAt: 4000,
+    resetAt: 6200,
+    cycleDuration: 9000,
+    activatingLabel: 'Activating workforce',
+    completedLabel: 'AI Workforce Online',
+  },
   navigation: [
     { label: 'Home', href: '#home' },
     { label: 'AI Workforce', href: '#ai-workforce' },
