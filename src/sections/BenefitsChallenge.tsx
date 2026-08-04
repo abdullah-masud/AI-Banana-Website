@@ -48,7 +48,7 @@ export function Challenge() {
           <div className="challenge-phone-wrap__ring" />
         </Reveal>
         <Reveal className="challenge-copy">
-          <p className="eyebrow"><span />Live AI Receptionist Challenge</p>
+          <p className="eyebrow challenge-copy__eyebrow"><span />Live AI Receptionist Challenge</p>
           <h2>Think Your Customers<br />Are Difficult?</h2>
           <p className="challenge-copy__lead">Call our AI Receptionist and put her to the test. Ask complicated questions. Interrupt her. Change your mind. Listen to how professionally she handles the conversation.</p>
           <div className="challenge-prompts">

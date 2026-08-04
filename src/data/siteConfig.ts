@@ -1,5 +1,11 @@
 import heroCharacter from '../assets/hero-character.webp'
 import transparentLogo from '../assets/logo.webp'
+import ashtonPortrait from '../assets/team-ashton.webp'
+import carterPortrait from '../assets/team-carter.webp'
+import everlyPortrait from '../assets/team-everly.webp'
+import finleyPortrait from '../assets/team-finley.webp'
+import lashayPortrait from '../assets/team-lashay.webp'
+import savannahPortrait from '../assets/team-savannah.webp'
 
 export const siteConfig = {
   company: 'AI Banana',
@@ -10,22 +16,32 @@ export const siteConfig = {
   assets: {
     logo: transparentLogo,
     heroCharacter,
+    masterRenderSource: 'assets/characters/Master Character Render v1.png',
   },
   links: {
-    booking: '#contact',
+    wixBooking: '',
+    aiReceptionistBooking: '',
     demoPhone: '',
-    email: '',
+    email: 'mailto:connect@get-aibanana.com',
     linkedin: '',
-    facebook: '',
+    facebook: 'https://www.facebook.com/profile.php?id=61588448423750',
+    instagram: 'https://www.instagram.com/get_aibanana/',
+    tiktok: 'https://www.tiktok.com/@aibananabiz',
     privacy: '',
     terms: '',
   },
   contact: {
-    phone: '[Phone number]',
-    email: '[Email address]',
-    location: '[Location]',
+    phone: '855-970-NANA',
+    phoneHref: 'tel:+18559706262',
+    email: 'connect@get-aibanana.com',
+    location: 'Based in Charlotte, NC — serving businesses nationwide.',
     demoPhone: '[Demo phone number]',
   },
+  booking: {
+    primaryLabel: 'Book a Strategy Call',
+    secondaryLabel: 'Book Through Our AI Receptionist',
+  },
+  heroTasks: ['Call answered', 'Lead qualified', 'Appointment booked', 'CRM updated', 'Follow-up sent', 'Report prepared'],
   navigation: [
     { label: 'Home', href: '#home' },
     { label: 'AI Workforce', href: '#ai-workforce' },
@@ -87,12 +103,12 @@ export const siteConfig = {
     { title: 'Small Businesses', icon: 'store' },
   ],
   workforce: [
-    { name: 'Savannah', role: 'Sales Concierge', initials: 'SA', accent: 'gold' },
-    { name: 'Sterling', role: 'Sales Concierge', initials: 'ST', accent: 'blue' },
-    { name: 'LaShay', role: 'Marketing Manager', initials: 'LS', accent: 'gold' },
-    { name: 'AI Architect', role: 'Automation Architect', initials: 'AA', accent: 'blue' },
-    { name: 'Email Specialist', role: 'Email Marketing Specialist', initials: 'ES', accent: 'gold' },
-    { name: 'CRM Specialist', role: 'CRM Specialist', initials: 'CS', accent: 'blue' },
+    { name: 'Savannah', role: 'Sales Concierge', image: savannahPortrait, accent: 'gold' },
+    { name: 'LaShay', role: 'Marketing Manager', image: lashayPortrait, accent: 'blue' },
+    { name: 'Ashton', role: 'Automation Architect', image: ashtonPortrait, accent: 'gold' },
+    { name: 'Finley', role: 'Funnel Builder', image: finleyPortrait, accent: 'blue' },
+    { name: 'Everly', role: 'Email Marketing Specialist', image: everlyPortrait, accent: 'gold' },
+    { name: 'Carter', role: 'Client Success Manager', image: carterPortrait, accent: 'blue' },
   ],
   whyUs: [
     { title: 'Designed around your business', description: 'Your workflows, voice, priorities, and customer experience become the blueprint.' },
@@ -102,7 +118,7 @@ export const siteConfig = {
   founderStory: {
     eyebrow: 'The story behind the name',
     title: 'Why the Name AI Banana?',
-    body: '“Banana” began as a family nickname—short for “Bad Nana”—earned by founder Shayla Davis because she never does anything halfway. It captures the same standard she brings to every client: show up early, notice what needs attention, and make hard things simpler.',
+    body: 'Some grandmothers are called Granny, Glamma, or Nana. Shayla’s grandbabies call her Banana—short for “Bad Nana.” That grandmother name inspired a brand built around noticing what needs to be handled and taking care of it before it becomes a problem.',
     closing: 'That is the AI Banana promise: thoughtful support, handled before it becomes a problem.',
     founder: 'Shayla Davis',
     role: 'Founder, AI Banana',

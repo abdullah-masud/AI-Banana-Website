@@ -1,5 +1,4 @@
-import { ArrowUpRight, Facebook, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
-import type { ReactNode } from 'react'
+import { ArrowUpRight, Facebook, Instagram, Mail, MapPin, Music2, Phone } from 'lucide-react'
 import { Button } from '../components/Button'
 import { Reveal } from '../components/Reveal'
 import { siteConfig } from '../data/siteConfig'
@@ -13,7 +12,10 @@ export function FinalCta() {
           <p className="eyebrow eyebrow--light"><span />Your next team member is AI</p>
           <h2>Ready to Build Your<br /><em>AI Workforce?</em></h2>
           <p>Let's find the repetitive work holding your business back—and design the team that takes it from here.</p>
-          <Button href={siteConfig.links.booking} variant="light">Schedule My Strategy Session</Button>
+          <div className="final-cta__actions">
+            <Button href={siteConfig.links.wixBooking} variant="light">{siteConfig.booking.primaryLabel}</Button>
+            <Button href={siteConfig.links.aiReceptionistBooking} variant="secondary">{siteConfig.booking.secondaryLabel}</Button>
+          </div>
           <small>No obligation. Just a focused conversation about what's possible.</small>
         </Reveal>
       </div>
@@ -22,12 +24,6 @@ export function FinalCta() {
 }
 
 export function Footer() {
-  const placeholderLink = (label: string, href: string, icon: ReactNode) => href ? (
-    <a href={href}>{icon}{label}<ArrowUpRight className="footer__external" /></a>
-  ) : (
-    <span className="footer__placeholder" aria-label={`${label} link coming soon`}>{icon}{label}<small>Coming soon</small></span>
-  )
-
   return (
     <footer className="footer">
       <div className="container footer__top">
@@ -42,14 +38,16 @@ export function Footer() {
         </div>
         <div className="footer__column">
           <h3>Contact</h3>
-          <span className="footer__placeholder"><Phone />{siteConfig.contact.phone}</span>
-          {siteConfig.links.email ? <a href={siteConfig.links.email}><Mail />{siteConfig.contact.email}</a> : <span className="footer__placeholder"><Mail />{siteConfig.contact.email}</span>}
+          <a href={siteConfig.contact.phoneHref} aria-label={`Call AI Banana at ${siteConfig.contact.phone}`}><Phone />{siteConfig.contact.phone}</a>
+          <a href={siteConfig.links.email}><Mail />{siteConfig.contact.email}</a>
           <span><MapPin />{siteConfig.contact.location}</span>
         </div>
         <div className="footer__column">
           <h3>Connect</h3>
-          {placeholderLink('LinkedIn', siteConfig.links.linkedin, <Linkedin />)}
-          {placeholderLink('Facebook', siteConfig.links.facebook, <Facebook />)}
+          <a href={siteConfig.links.facebook} target="_blank" rel="noreferrer" aria-label="AI Banana on Facebook"><Facebook />Facebook<ArrowUpRight className="footer__external" /></a>
+          <a href={siteConfig.links.instagram} target="_blank" rel="noreferrer" aria-label="AI Banana on Instagram"><Instagram />Instagram<ArrowUpRight className="footer__external" /></a>
+          <a href={siteConfig.links.tiktok} target="_blank" rel="noreferrer" aria-label="AI Banana on TikTok"><Music2 />TikTok<ArrowUpRight className="footer__external" /></a>
+          <span className="footer__placeholder" aria-label="LinkedIn link awaiting client confirmation">LinkedIn<small>Confirm link</small></span>
         </div>
       </div>
       <div className="container footer__bottom">

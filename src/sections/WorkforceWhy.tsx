@@ -18,7 +18,9 @@ export function Workforce() {
         <div className="workforce-grid">
           {siteConfig.workforce.map((member, index) => (
             <Reveal className="workforce-card" key={member.name} delay={Math.min(index * 70, 280)}>
-              <div className={`workforce-card__avatar workforce-card__avatar--${member.accent}`}>{member.initials}</div>
+              <div className={`workforce-card__avatar workforce-card__avatar--${member.accent}`}>
+                <img src={member.image} alt={`${member.name}, ${member.role}`} width="320" height="320" loading="lazy" decoding="async" />
+              </div>
               <h3>{member.name}</h3>
               <p>{member.role}</p>
               <span className="workforce-card__status"><i />Active</span>
@@ -48,7 +50,7 @@ export function WhyUs() {
           <div className="why-list">
             {siteConfig.whyUs.map((item) => <div key={item.title}><CheckCircle2 /><span><strong>{item.title}</strong><p>{item.description}</p></span></div>)}
           </div>
-          <Button href={siteConfig.links.booking} variant="secondary">Explore Your AI Workforce</Button>
+          <Button href={siteConfig.links.wixBooking} variant="secondary">Explore Your AI Workforce</Button>
         </Reveal>
       </div>
     </section>
