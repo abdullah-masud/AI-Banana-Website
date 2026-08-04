@@ -47,7 +47,6 @@ export function Footer() {
           <a href={siteConfig.links.facebook} target="_blank" rel="noreferrer" aria-label="AI Banana on Facebook"><Facebook />Facebook<ArrowUpRight className="footer__external" /></a>
           <a href={siteConfig.links.instagram} target="_blank" rel="noreferrer" aria-label="AI Banana on Instagram"><Instagram />Instagram<ArrowUpRight className="footer__external" /></a>
           <a href={siteConfig.links.tiktok} target="_blank" rel="noreferrer" aria-label="AI Banana on TikTok"><Music2 />TikTok<ArrowUpRight className="footer__external" /></a>
-          <span className="footer__placeholder" aria-label="LinkedIn link awaiting client confirmation">LinkedIn<small>Confirm link</small></span>
         </div>
       </div>
       <div className="container footer__bottom">

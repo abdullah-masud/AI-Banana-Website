@@ -23,7 +23,6 @@ export const siteConfig = {
     aiReceptionistBooking: '',
     demoPhone: '',
     email: 'mailto:connect@get-aibanana.com',
-    linkedin: '',
     facebook: 'https://www.facebook.com/profile.php?id=61588448423750',
     instagram: 'https://www.instagram.com/get_aibanana/',
     tiktok: 'https://www.tiktok.com/@aibananabiz',

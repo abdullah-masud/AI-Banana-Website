@@ -351,8 +351,6 @@ p { text-wrap: pretty; }
 .footer__column a:hover { color: var(--dark-gold); }
 .footer__column svg { width: 14px; color: var(--gold); }
 .footer__external { margin-left: auto; color: #8793a4 !important; }
-.footer__placeholder { cursor: default; }
-.footer__placeholder small { margin-left: auto; color: #8793a4; font-size: .63rem; text-transform: uppercase; letter-spacing: .06em; }
 .footer__bottom { display: flex; justify-content: space-between; padding-top: 23px; border-top: 1px solid #d6dfe9; color: #69778d; font-size: .72rem; }
 .footer__bottom div { display: flex; gap: 22px; }
 .footer__bottom div span { color: #8793a4; }
