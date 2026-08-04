@@ -10,7 +10,6 @@ export function Hero() {
       <div className="hero__glow hero__glow--two" />
       <div className="container hero__grid">
         <div className="hero__copy">
-          <img className="hero__brand-logo" src={siteConfig.assets.logo} alt="AI Banana" width="900" height="311" decoding="async" />
           <div className="hero__kicker"><span className="hero__kicker-dot" />{siteConfig.supportingStatement}</div>
           <h1>We Build Your<br /><span>AI Workforce™</span></h1>
           <p className="hero__description">{siteConfig.description}</p>
