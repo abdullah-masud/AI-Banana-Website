@@ -29,9 +29,9 @@ export function Hero() {
             <img src={siteConfig.assets.heroCharacter} alt="AI Banana, a professional AI Workforce Officer" width="820" height="1230" fetchPriority="high" decoding="async" />
             <div className="hero__status-card hero__status-card--top"><span className="status-pulse" /><div><small>AI Workforce</small><strong>Online & ready</strong></div></div>
             <div className="hero__status-card hero__status-card--bottom"><CheckCircle2 /><div><small>Task status</small><strong>Already handled.</strong></div></div>
-            <div className="hero__task-sequence" aria-label="AI task automation sequence">
-              {siteConfig.heroTasks.map((task, index) => <span key={task} style={{ '--task-index': index } as CSSProperties}><i><CheckCircle2 /></i>{task}</span>)}
-            </div>
+          </div>
+          <div className="hero__task-sequence" aria-label="AI task automation sequence">
+            {siteConfig.heroTasks.map((task, index) => <span key={task} style={{ '--task-index': index } as CSSProperties}><i><CheckCircle2 /></i>{task}</span>)}
           </div>
           <p className="hero__signature">“I've already handled it.”</p>
         </div>
