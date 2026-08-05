@@ -156,23 +156,24 @@ p { text-wrap: pretty; }
 .robot-workforce__stage::after { content: ''; position: absolute; z-index: 5; inset: auto -16px -18px; height: 105px; background: linear-gradient(180deg,transparent,#f8fafc 74%); pointer-events: none; }
 .robot-workforce__halo { position: absolute; z-index: 1; width: 260px; height: 260px; left: 50%; top: 22%; transform: translateX(-50%); border: 1px solid rgba(78,159,214,.12); border-radius: 50%; box-shadow: 0 0 0 38px rgba(78,159,214,.025),0 0 0 39px rgba(78,159,214,.055); transition: box-shadow .8s ease,border-color .8s ease; }
 .robot-workforce--online .robot-workforce__halo { border-color: rgba(91,178,228,.25); box-shadow: 0 0 0 38px rgba(78,159,214,.04),0 0 0 39px rgba(78,159,214,.1),0 0 55px rgba(68,158,216,.13); }
-.robot-workforce__body { position: absolute; z-index: 3; width: 220%; height: 100%; max-width: none; left: -60%; bottom: 0; object-fit: contain; object-position: center bottom; filter: saturate(.92) contrast(1.02); pointer-events: none; }
-.robot-arm { position: absolute; z-index: 4; width: 64%; max-width: none; height: auto; opacity: 0; pointer-events: none; will-change: transform,opacity,filter; transition: transform .58s var(--ease-premium),opacity .42s ease,filter .55s ease; }
-.robot-arm--left { right: 47%; transform-origin: 50% 42%; }
-.robot-arm--right { right: 47%; transform-origin: 93% 42%; }
-.robot-arm--upper { top: 17%; }
-.robot-arm--middle { top: 31%; }
-.robot-arm--lower { top: 45%; }
-.robot-arm--left.robot-arm--idle { transform: scale(-.54,.54) rotate(-9deg); }
-.robot-arm--right.robot-arm--idle { transform: scale(.54) rotate(9deg); }
-.robot-arm--left.robot-arm--deploying { opacity: .9; transform: scale(-.84,.84) rotate(-4deg); }
-.robot-arm--right.robot-arm--deploying { opacity: .9; transform: scale(.84) rotate(4deg); }
-.robot-arm--left.robot-arm--working { opacity: 1 !important; transform: scale(-1,1) rotate(1.5deg); }
-.robot-arm--right.robot-arm--working { opacity: 1 !important; transform: scale(1) rotate(-1.5deg); }
-.robot-arm--completed { opacity: 1 !important; transform: scale(1) rotate(0); filter: drop-shadow(0 10px 18px rgba(46,139,199,.16)); }
-.robot-arm--left.robot-arm--completed { transform: scale(-1,1) rotate(0); }
-.robot-arm--left.robot-arm--retracting { opacity: 0; transform: scale(-.66,.66) rotate(-7deg); }
-.robot-arm--right.robot-arm--retracting { opacity: 0; transform: scale(.66) rotate(7deg); }
+.robot-rig { position: absolute; z-index: 2; width: 420px; height: 560px; left: 50%; top: 18px; transform: translateX(-50%); pointer-events: none; }
+.robot-rig__rear-arms { position: absolute; z-index: 1; inset: 0; }
+.robot-rig__body { position: absolute; z-index: 10; height: 105%; width: auto; max-width: none; left: 50%; bottom: -6%; transform: translateX(-50%); clip-path: inset(0 35% 0 35%); filter: saturate(.92) contrast(1.02); pointer-events: none; }
+.robot-arm { position: absolute; width: 0; height: 0; left: var(--arm-anchor-x); top: var(--arm-anchor-y); opacity: 0; transform-origin: 0 0; transform: translate(var(--arm-translate-x),var(--arm-translate-y)) rotate(var(--arm-retracted-rotation)) scale(.82); pointer-events: none; will-change: transform,opacity,filter; transition: transform .62s var(--ease-premium),filter .5s ease; }
+.robot-arm__asset { position: absolute; display: block; width: var(--arm-width); transform: translate(calc(-1 * var(--arm-origin-x)),calc(-1 * var(--arm-origin-y))); }
+.robot-arm__image { display: block; width: 100%; height: auto; max-width: none; }
+.robot-arm__image--flipped { transform: scaleX(-1); }
+.robot-arm--deploying { opacity: .88 !important; transform: rotate(calc((var(--arm-retracted-rotation) + var(--arm-deployed-rotation)) / 2)) scale(.92); }
+.robot-arm--working,.robot-arm--completed { opacity: 1 !important; transform: rotate(var(--arm-deployed-rotation)) scale(1); }
+.robot-arm--completed { filter: drop-shadow(0 10px 18px rgba(46,139,199,.16)); }
+.robot-arm--retracting { opacity: 0; transform: translate(var(--arm-translate-x),var(--arm-translate-y)) rotate(var(--arm-retracted-rotation)) scale(.86); }
+.robot-workforce__stage--debug .robot-rig { outline: 1px dashed #e05656; }
+.robot-rig__centreline { position: absolute; z-index: 30; width: 1px; inset-block: 0; left: 50%; background: rgba(224,86,86,.7); }
+.robot-rig__label,.robot-arm__debug-label { position: absolute; z-index: 31; padding: 2px 5px; color: #fff; background: #9d3232; font: 600 9px/1.2 monospace; white-space: nowrap; }
+.robot-rig__label { left: 4px; top: 4px; }
+.robot-arm--debug { opacity: .35; }
+.robot-arm--debug::after { content: ''; position: absolute; width: 9px; height: 9px; left: -5px; top: -5px; border: 1px solid #fff; border-radius: 50%; background: #e05656; box-shadow: 0 0 0 2px #e05656; }
+.robot-arm__debug-label { left: 7px; top: -6px; }
 .robot-workforce__status,.robot-workforce__handled { position: absolute; z-index: 8; display: flex; align-items: center; gap: 11px; border: 1px solid rgba(255,255,255,.85); background: rgba(253,253,253,.88); backdrop-filter: blur(18px); box-shadow: 0 18px 44px rgba(3,29,77,.14); }
 .robot-workforce__status { top: 108px; right: -36px; min-width: 190px; padding: 13px 15px; border-radius: 13px; transition: border-color .35s ease,box-shadow .35s ease; }
 .robot-workforce__status--online { border-color: rgba(115,192,236,.58); box-shadow: 0 18px 44px rgba(3,29,77,.14),0 0 24px rgba(75,163,219,.12); }
@@ -421,7 +422,7 @@ p { text-wrap: pretty; }
   .robot-workforce__stage { height: 580px; }
   .robot-workforce__status { right: -18px; }
   .robot-workforce__handled { left: -20px; }
-  .robot-arm { width: 60%; }
+  .robot-rig { transform: translateX(-50%) scale(.92); transform-origin: 50% 0; }
   .challenge-grid { gap: 60px; }
   .industries-layout,.why-grid { gap: 55px; }
   .workforce-grid { grid-template-columns: repeat(3,1fr); gap: 14px; }
@@ -508,10 +509,8 @@ p { text-wrap: pretty; }
   .hero__task-sequence > span { padding: 8px 9px; font-size: .62rem; }
   .hero__task-sequence > span:nth-child(n+4) { display: none; }
   .robot-workforce__stage { width: calc(100% - 8px); height: 480px; border-radius: 180px 180px 28px 28px; }
-  .robot-workforce__body { width: 250%; left: -75%; }
-  .robot-arm { width: 62%; transition-duration: .42s; }
-  .robot-arm--left { right: 45%; }
-  .robot-arm--right { right: 45%; }
+  .robot-rig { top: 12px; transform: translateX(-50%) scale(.78); transform-origin: 50% 0; }
+  .robot-arm { display: none; }
   .robot-workforce__status { top: 70px; right: -3px; min-width: 156px; padding: 10px 11px; }
   .robot-workforce__handled { display: none; }
   .robot-workforce__signature { right: 5px; bottom: 86px; padding: 7px 9px; font-size: .65rem; }
@@ -573,7 +572,6 @@ p { text-wrap: pretty; }
   .hero__task-sequence { display: none; }
   .robot-task-queue { grid-template-columns: repeat(2,1fr); }
   .robot-workforce__signature { bottom: 126px; }
-  .robot-arm { width: 57%; }
   .footer__top { grid-template-columns: 1fr; }
   .footer__brand,.footer__column:nth-child(3) { grid-column: auto; }
 }
@@ -584,6 +582,6 @@ p { text-wrap: pretty; }
   .reveal { opacity: 1; transform: none; }
   .hero__task-sequence > span,.hero__task-sequence > span::before,.hero__task-sequence > span::after { opacity: 1; transform: none; animation: none !important; }
   .robot-arm { display: none; }
-  .robot-workforce__body { animation: none; }
+  .robot-rig__body { animation: none; }
   .robot-task__progress { display: none; }
 }
