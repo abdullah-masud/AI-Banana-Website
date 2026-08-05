@@ -6,6 +6,13 @@ import everlyPortrait from '../assets/team-everly.webp'
 import finleyPortrait from '../assets/team-finley.webp'
 import lashayPortrait from '../assets/team-lashay.webp'
 import savannahPortrait from '../assets/team-savannah.webp'
+import analyticsArm from '../../assets/animation/generated/analytics-arm.png'
+import robotBody from '../../assets/animation/generated/body.png'
+import calendarArm from '../../assets/animation/generated/calendar-arm.png'
+import crmArm from '../../assets/animation/generated/crm-arm.png'
+import emailArm from '../../assets/animation/generated/email-arm.png'
+import receptionistArm from '../../assets/animation/generated/receptionist-arm.png'
+import workflowArm from '../../assets/animation/generated/workflow-arm.png'
 
 export const siteConfig = {
   company: 'AI Banana',
@@ -17,6 +24,7 @@ export const siteConfig = {
     logo: transparentLogo,
     heroCharacter,
     masterRenderSource: 'assets/characters/Master Character Render v1.png',
+    robotBody,
   },
   links: {
     wixBooking: '',
@@ -40,14 +48,18 @@ export const siteConfig = {
     primaryLabel: 'Book a Strategy Call',
     secondaryLabel: 'Book Through Our AI Receptionist',
   },
-  heroTasks: ['Call answered', 'Lead qualified', 'Appointment booked', 'CRM updated', 'Follow-up sent', 'Report prepared'],
-  heroActivation: {
-    taskTimings: [500, 1450, 2400, 2900, 3250, 3600],
-    completedAt: 4000,
-    resetAt: 6200,
-    cycleDuration: 9000,
-    activatingLabel: 'Activating workforce',
-    completedLabel: 'AI Workforce Online',
+  robotArmAnimation: {
+    cycleDuration: 17500,
+    finalAt: 13250,
+    resetAt: 16000,
+    tasks: [
+      { id: 'receptionist', title: 'Incoming Phone Call', incoming: 'Waiting', action: 'Connecting call', result: 'Answered', side: 'left', level: 'upper', asset: receptionistArm, start: 900, duration: 2200 },
+      { id: 'email', title: 'New Email', incoming: 'Waiting', action: 'Preparing reply', result: 'Sent', side: 'right', level: 'upper', asset: emailArm, start: 3600, duration: 2200 },
+      { id: 'calendar', title: 'Meeting Request', incoming: 'Waiting', action: 'Checking calendar', result: 'Scheduled', side: 'left', level: 'middle', asset: calendarArm, start: 6200, duration: 1800 },
+      { id: 'crm', title: 'CRM Update', incoming: 'Waiting', action: 'Updating customer', result: 'Saved', side: 'right', level: 'middle', asset: crmArm, start: 8300, duration: 1500 },
+      { id: 'workflow', title: 'Workflow Automation', incoming: 'Waiting', action: 'Running automation', result: 'Completed', side: 'left', level: 'lower', asset: workflowArm, start: 10000, duration: 1350 },
+      { id: 'analytics', title: 'Analytics', incoming: 'Waiting', action: 'Building report', result: 'Report Ready', side: 'right', level: 'lower', asset: analyticsArm, start: 11500, duration: 1350 },
+    ],
   },
   navigation: [
     { label: 'Home', href: '#home' },
