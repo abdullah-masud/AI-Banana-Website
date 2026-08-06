@@ -6,24 +6,26 @@ import { TaskQueue } from './TaskQueue'
 
 export function RobotWorkforce() {
   const animation = useRobotArmAnimation()
-  const activeTask = animation.activeTaskIndex === null ? null : robotArmConfig.tasks[animation.activeTaskIndex]
+  const activePair = animation.activePairIndex === null ? null : robotArmConfig.pairs[animation.activePairIndex]
   const debugRig = robotArmConfig.debug
+  const latestResult = animation.visiblePairs ? robotArmConfig.pairs[animation.visiblePairs - 1].result : 'Working quietly.'
+  const handledText = animation.workforceOnline ? 'Everything handled.' : activePair ? (animation.phase === 'retracting' ? activePair.result : activePair.action) : latestResult
 
   return (
-    <div className={`robot-workforce ${animation.workforceOnline ? 'robot-workforce--online' : ''}`} aria-label="AI Banana actively handling business tasks">
+    <div className={`robot-workforce ${animation.workforceOnline ? 'robot-workforce--online' : ''}`} aria-label="AI Banana quietly activating business capabilities">
       <div className={`robot-workforce__stage ${debugRig ? 'robot-workforce__stage--debug' : ''}`}>
         <div className="robot-workforce__halo" />
         <div className="robot-rig">
           <div className="robot-rig__rear-arms">
-            {robotArmConfig.tasks.map((task, index) => (
+            {robotArmConfig.tasks.map((task) => (
               <RobotArm
                 key={task.id}
                 id={task.id}
                 src={task.asset}
-                alt={`${task.title} robotic arm performing ${task.action.toLowerCase()}`}
+                alt={`${task.title} capability arm active`}
                 rig={task.rig}
-                phase={index === animation.activeTaskIndex ? animation.phase : 'idle'}
-                active={index === animation.activeTaskIndex}
+                phase={task.pair === animation.activePairIndex ? animation.phase : task.pair < animation.visiblePairs ? 'completed' : 'idle'}
+                active={task.pair === animation.activePairIndex || task.pair < animation.visiblePairs}
                 debug={debugRig}
               />
             ))}
@@ -33,12 +35,12 @@ export function RobotWorkforce() {
         </div>
         <div className={`robot-workforce__status ${animation.workforceOnline ? 'robot-workforce__status--online' : ''}`} aria-live="polite">
           <span className="status-pulse" />
-          <div><small>{activeTask ? activeTask.title : 'AI Workforce'}</small><strong>{animation.workforceOnline ? 'AI Workforce Online' : activeTask ? activeTask.action : 'Ready'}</strong></div>
+          <div><small>{activePair?.label ?? 'AI Workforce'}</small><strong>{animation.workforceOnline ? 'AI Workforce Online' : activePair?.action ?? (animation.visiblePairs ? 'Capabilities active' : 'Ready')}</strong></div>
         </div>
-        <div className="robot-workforce__handled"><CheckCircle2 /><span><small>Task status</small><strong>{activeTask && animation.phase === 'completed' ? activeTask.result : animation.workforceOnline ? 'Everything handled.' : 'Working quietly.'}</strong></span></div>
+        <div className="robot-workforce__handled"><CheckCircle2 /><span><small>Task status</small><strong>{handledText}</strong></span></div>
         <p className="robot-workforce__signature">“I've already handled it.”</p>
       </div>
-      <TaskQueue activeTaskIndex={animation.activeTaskIndex} completedTaskCount={animation.completedTaskCount} phase={animation.phase} />
+      <TaskQueue activePairIndex={animation.activePairIndex} visiblePairs={animation.visiblePairs} phase={animation.phase} />
     </div>
   )
 }

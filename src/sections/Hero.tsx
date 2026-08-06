@@ -1,5 +1,6 @@
 import { CheckCircle2, Play } from 'lucide-react'
 import { Button } from '../components/Button'
+import { RobotWorkforce } from '../components/hero/RobotWorkforce'
 import { siteConfig } from '../data/siteConfig'
 
 export function Hero() {
@@ -23,11 +24,7 @@ export function Hero() {
             ))}
           </div>
         </div>
-        <div className="hero__visual">
-          <div className="hero__power-mode">
-            <img src={siteConfig.assets.powerModeHero} alt="AI Banana in Power Mode with six AI capability arms deployed" width="578" height="718" fetchPriority="high" decoding="async" />
-          </div>
-        </div>
+        <div className="hero__visual"><RobotWorkforce /></div>
       </div>
       <div className="hero__bottom-fade" />
     </section>

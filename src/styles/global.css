@@ -163,14 +163,13 @@ p { text-wrap: pretty; }
 .robot-rig { position: absolute; z-index: 2; width: 420px; height: 560px; left: 50%; top: 18px; transform: translateX(-50%); pointer-events: none; }
 .robot-rig__rear-arms { position: absolute; z-index: 1; inset: 0; }
 .robot-rig__body { position: absolute; z-index: 10; height: 105%; width: auto; max-width: none; left: 50%; bottom: -6%; transform: translateX(-50%); clip-path: inset(0 35% 0 35%); filter: saturate(.92) contrast(1.02); pointer-events: none; }
-.robot-arm { position: absolute; width: 0; height: 0; left: var(--arm-anchor-x); top: var(--arm-anchor-y); opacity: 0; transform-origin: 0 0; transform: translate(var(--arm-translate-x),var(--arm-translate-y)) rotate(var(--arm-retracted-rotation)) scale(.82); pointer-events: none; will-change: transform,opacity,filter; transition: transform .62s var(--ease-premium),filter .5s ease; }
+.robot-arm { position: absolute; width: 0; height: 0; left: var(--arm-anchor-x); top: var(--arm-anchor-y); opacity: 0; transform-origin: 0 0; transform: translate(var(--arm-translate-x),var(--arm-translate-y)) rotate(var(--arm-retracted-rotation)) scale(.96); pointer-events: none; will-change: transform,opacity,filter; transition: transform var(--arm-duration) ease-in-out,opacity var(--arm-duration) ease-in-out,filter .5s ease; }
 .robot-arm__asset { position: absolute; display: block; width: var(--arm-width); transform: translate(calc(-1 * var(--arm-origin-x)),calc(-1 * var(--arm-origin-y))); }
 .robot-arm__image { display: block; width: 100%; height: auto; max-width: none; }
 .robot-arm__image--flipped { transform: scaleX(-1); }
-.robot-arm--deploying { opacity: .88 !important; transform: rotate(calc((var(--arm-retracted-rotation) + var(--arm-deployed-rotation)) / 2)) scale(.92); }
-.robot-arm--working,.robot-arm--completed { opacity: 1 !important; transform: rotate(var(--arm-deployed-rotation)) scale(1); }
+.robot-arm--deploying,.robot-arm--completed { opacity: 1; transform: rotate(var(--arm-deployed-rotation)) scale(1); }
 .robot-arm--completed { filter: drop-shadow(0 10px 18px rgba(46,139,199,.16)); }
-.robot-arm--retracting { opacity: 0; transform: translate(var(--arm-translate-x),var(--arm-translate-y)) rotate(var(--arm-retracted-rotation)) scale(.86); }
+.robot-arm--retracting { opacity: 0; transform: translate(var(--arm-translate-x),var(--arm-translate-y)) rotate(var(--arm-retracted-rotation)) scale(.96); }
 .robot-workforce__stage--debug .robot-rig { outline: 1px dashed #e05656; }
 .robot-rig__centreline { position: absolute; z-index: 30; width: 1px; inset-block: 0; left: 50%; background: rgba(224,86,86,.7); }
 .robot-rig__label,.robot-arm__debug-label { position: absolute; z-index: 31; padding: 2px 5px; color: #fff; background: #9d3232; font: 600 9px/1.2 monospace; white-space: nowrap; }
@@ -518,9 +517,8 @@ p { text-wrap: pretty; }
   .hero__task-sequence > span { padding: 8px 9px; font-size: .62rem; }
   .hero__task-sequence > span:nth-child(n+4) { display: none; }
   .robot-workforce__stage { width: calc(100% - 8px); height: 480px; border-radius: 180px 180px 28px 28px; }
-  .robot-rig { top: 12px; transform: translateX(-50%) scale(.78); transform-origin: 50% 0; }
-  .robot-arm { display: none; }
-  .robot-workforce__status { top: 70px; right: -3px; min-width: 156px; padding: 10px 11px; }
+  .robot-rig { top: 12px; transform: translateX(-50%) scale(.7); transform-origin: 50% 0; }
+  .robot-workforce__status { top: 70px; right: 8px; min-width: 156px; padding: 10px 11px; }
   .robot-workforce__handled { display: none; }
   .robot-workforce__signature { right: 5px; bottom: 86px; padding: 7px 9px; font-size: .65rem; }
   .robot-task-queue { width: calc(100% - 12px); gap: 4px; }
@@ -590,7 +588,6 @@ p { text-wrap: pretty; }
   *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
   .hero__task-sequence > span,.hero__task-sequence > span::before,.hero__task-sequence > span::after { opacity: 1; transform: none; animation: none !important; }
-  .robot-arm { display: none; }
   .robot-rig__body { animation: none; }
   .robot-task__progress { display: none; }
 }

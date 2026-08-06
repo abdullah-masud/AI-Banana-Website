@@ -2,63 +2,59 @@ import { useEffect, useState } from 'react'
 import { robotArmConfig } from '../data/robotArmConfig'
 import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 
-export type ArmPhase = 'idle' | 'deploying' | 'working' | 'completed' | 'retracting'
+export type ArmPhase = 'idle' | 'deploying' | 'completed' | 'retracting'
 
 export function useRobotArmAnimation() {
   const reducedMotion = usePrefersReducedMotion()
-  const [activeTaskIndex, setActiveTaskIndex] = useState<number | null>(null)
+  const [visiblePairs, setVisiblePairs] = useState(0)
+  const [activePairIndex, setActivePairIndex] = useState<number | null>(null)
   const [phase, setPhase] = useState<ArmPhase>('idle')
-  const [completedTaskCount, setCompletedTaskCount] = useState(0)
-  const [workforceOnline, setWorkforceOnline] = useState(false)
 
   useEffect(() => {
-    const animation = robotArmConfig
-
     if (reducedMotion) {
-      setActiveTaskIndex(null)
+      setVisiblePairs(3)
+      setActivePairIndex(null)
       setPhase('completed')
-      setCompletedTaskCount(animation.tasks.length)
-      setWorkforceOnline(true)
       return
     }
 
     let timers: number[] = []
-
-    const schedule = (callback: () => void, delay: number) => {
-      timers.push(window.setTimeout(callback, delay))
-    }
+    const schedule = (callback: () => void, delay: number) => timers.push(window.setTimeout(callback, delay))
 
     const runCycle = () => {
       timers.forEach(window.clearTimeout)
       timers = []
-      setActiveTaskIndex(null)
+      setVisiblePairs(0)
+      setActivePairIndex(null)
       setPhase('idle')
-      setCompletedTaskCount(0)
-      setWorkforceOnline(false)
 
-      animation.tasks.forEach((task, index) => {
-        schedule(() => { setActiveTaskIndex(index); setPhase('deploying') }, task.start)
-        schedule(() => setPhase('working'), task.start + task.duration * .3)
-        schedule(() => { setPhase('completed'); setCompletedTaskCount(index + 1) }, task.start + task.duration * .66)
-        schedule(() => setPhase('retracting'), task.start + task.duration * .84)
-        schedule(() => { setActiveTaskIndex(null); setPhase('idle') }, task.start + task.duration)
-      })
+      const deploy = (pair: number, start: number, duration: number) => {
+        schedule(() => { setActivePairIndex(pair); setPhase('deploying') }, start)
+        schedule(() => { setVisiblePairs(pair + 1); setActivePairIndex(null); setPhase('completed') }, start + duration)
+      }
+      const retract = (pair: number, start: number, duration: number) => {
+        schedule(() => { setActivePairIndex(pair); setPhase('retracting') }, start)
+        schedule(() => { setVisiblePairs(pair); setActivePairIndex(null); setPhase(pair ? 'completed' : 'idle') }, start + duration)
+      }
 
-      schedule(() => setWorkforceOnline(true), animation.finalAt)
-      schedule(() => {
-        setCompletedTaskCount(0)
-        setWorkforceOnline(false)
-      }, animation.resetAt)
+      deploy(0, 900, 700)
+      deploy(1, 1900, 600)
+      deploy(2, 2800, 500)
+      retract(2, 5800, 500)
+      retract(1, 6450, 600)
+      retract(0, 7200, 700)
     }
 
     runCycle()
-    const cycle = window.setInterval(runCycle, animation.cycleDuration)
-
-    return () => {
-      timers.forEach(window.clearTimeout)
-      window.clearInterval(cycle)
-    }
+    const cycle = window.setInterval(runCycle, robotArmConfig.cycleDuration)
+    return () => { timers.forEach(window.clearTimeout); window.clearInterval(cycle) }
   }, [reducedMotion])
 
-  return { activeTaskIndex, phase, completedTaskCount, workforceOnline, reducedMotion }
+  return {
+    visiblePairs,
+    activePairIndex,
+    phase,
+    workforceOnline: visiblePairs === 3 && activePairIndex === null,
+    reducedMotion,
+  }
 }

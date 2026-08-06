@@ -5,20 +5,19 @@ import type { ArmPhase } from '../../hooks/useRobotArmAnimation'
 const icons = { receptionist: Phone, email: Mail, calendar: CalendarDays, crm: Database, workflow: Workflow, analytics: BarChart3 }
 
 type TaskQueueProps = {
-  activeTaskIndex: number | null
-  completedTaskCount: number
+  activePairIndex: number | null
+  visiblePairs: number
   phase: ArmPhase
 }
 
-export function TaskQueue({ activeTaskIndex, completedTaskCount, phase }: TaskQueueProps) {
+export function TaskQueue({ activePairIndex, visiblePairs, phase }: TaskQueueProps) {
   return (
     <div className="robot-task-queue" aria-label="AI workforce task queue">
-      {robotArmConfig.tasks.map((task, index) => {
+      {robotArmConfig.tasks.map((task) => {
         const Icon = icons[task.id]
-        const complete = index < completedTaskCount
-        const active = index === activeTaskIndex
-        const status = complete ? task.result : active ? task.action : task.incoming
-
+        const complete = task.pair < visiblePairs
+        const active = task.pair === activePairIndex
+        const status = complete ? task.result : active ? phase === 'retracting' ? task.result : task.action : task.incoming
         return (
           <div className={`robot-task ${active ? 'robot-task--active' : ''} ${complete ? 'robot-task--complete' : ''}`} key={task.id}>
             <span className="robot-task__icon">{complete ? <Check /> : <Icon />}</span>

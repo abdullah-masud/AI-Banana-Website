@@ -5,6 +5,7 @@ export type ArmRigConfig = {
   anchorX: number
   anchorY: number
   width: number
+  duration: number
   rotationRetracted: number
   rotationDeployed: number
   translateX: number
@@ -32,6 +33,7 @@ export function RobotArm({ id, src, alt, phase, active, rig, debug = false }: Ro
     '--arm-anchor-x': `${rig.anchorX}%`,
     '--arm-anchor-y': `${rig.anchorY}%`,
     '--arm-width': `${420 * rig.width / 100}px`,
+    '--arm-duration': `${rig.duration}ms`,
     '--arm-origin-x': `${rig.transformOriginX}%`,
     '--arm-origin-y': `${rig.transformOriginY}%`,
     '--arm-retracted-rotation': `${rig.rotationRetracted}deg`,
