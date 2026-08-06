@@ -7,7 +7,7 @@ import finleyPortrait from '../assets/team-finley.webp'
 import lashayPortrait from '../assets/team-lashay.webp'
 import savannahPortrait from '../assets/team-savannah.webp'
 import chiefOfStaffPortrait from '../../assets/characters/AI-Banana_ChiefOfStaff.png'
-import powerModeHero from '../../assets/characters/AI-Banana_Power_Mode.png'
+import powerModeHero from '../../assets/characters/AI-Banana_Power_Mode_HiRes.png'
 
 export const siteConfig = {
   company: 'AI Banana',
