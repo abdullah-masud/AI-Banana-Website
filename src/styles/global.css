@@ -183,7 +183,7 @@ p { text-wrap: pretty; }
 .robot-arm--debug::after { content: ''; position: absolute; width: 9px; height: 9px; left: -5px; top: -5px; border: 1px solid #fff; border-radius: 50%; background: #e05656; box-shadow: 0 0 0 2px #e05656; }
 .robot-arm__debug-label { left: 7px; top: -6px; }
 .robot-workforce__status,.robot-workforce__handled { position: absolute; z-index: 8; display: flex; align-items: center; gap: 11px; border: 1px solid rgba(255,255,255,.85); background: rgba(253,253,253,.88); backdrop-filter: blur(18px); box-shadow: 0 18px 44px rgba(3,29,77,.14); }
-.robot-workforce__status { top: 108px; right: -36px; min-width: 190px; padding: 13px 15px; border-radius: 13px; transition: border-color .35s ease,box-shadow .35s ease; }
+.robot-workforce__status { top: -8px; right: -20px; min-width: 190px; padding: 13px 15px; border-radius: 13px; transition: border-color .35s ease,box-shadow .35s ease; }
 .robot-workforce__status--online { border-color: rgba(115,192,236,.58); box-shadow: 0 18px 44px rgba(3,29,77,.14),0 0 24px rgba(75,163,219,.12); }
 .robot-workforce__handled { left: -46px; bottom: 105px; min-width: 180px; padding: 12px 14px; border-radius: 13px; }
 .robot-workforce__handled > svg { width: 21px; color: var(--gold); }
@@ -523,7 +523,7 @@ p { text-wrap: pretty; }
   .hero__task-sequence > span:nth-child(n+4) { display: none; }
   .robot-workforce__stage { width: calc(100% - 8px); height: 480px; border-radius: 180px 180px 28px 28px; }
   .robot-rig { top: 12px; transform: translateX(-50%) scale(.7); transform-origin: 50% 0; }
-  .robot-workforce__status { top: 70px; right: 8px; min-width: 156px; padding: 10px 11px; }
+  .robot-workforce__status { top: -28px; right: 8px; min-width: 156px; padding: 10px 11px; }
   .robot-workforce__handled { display: none; }
   .robot-workforce__signature { right: 5px; bottom: 86px; padding: 7px 9px; font-size: .65rem; }
   .robot-task-queue { width: calc(100% - 12px); gap: 4px; }
