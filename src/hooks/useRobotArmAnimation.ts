@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { siteConfig } from '../data/siteConfig'
+import { robotArmConfig } from '../data/robotArmConfig'
 import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 
 export type ArmPhase = 'idle' | 'deploying' | 'working' | 'completed' | 'retracting'
@@ -12,7 +12,7 @@ export function useRobotArmAnimation() {
   const [workforceOnline, setWorkforceOnline] = useState(false)
 
   useEffect(() => {
-    const animation = siteConfig.robotArmAnimation
+    const animation = robotArmConfig
 
     if (reducedMotion) {
       setActiveTaskIndex(null)

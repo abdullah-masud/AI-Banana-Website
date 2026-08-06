@@ -1,13 +1,13 @@
 import { CheckCircle2 } from 'lucide-react'
-import { siteConfig } from '../../data/siteConfig'
+import { robotArmConfig } from '../../data/robotArmConfig'
 import { useRobotArmAnimation } from '../../hooks/useRobotArmAnimation'
 import { RobotArm } from './RobotArm'
 import { TaskQueue } from './TaskQueue'
 
 export function RobotWorkforce() {
   const animation = useRobotArmAnimation()
-  const activeTask = animation.activeTaskIndex === null ? null : siteConfig.robotArmAnimation.tasks[animation.activeTaskIndex]
-  const debugRig = siteConfig.robotArmAnimation.debug
+  const activeTask = animation.activeTaskIndex === null ? null : robotArmConfig.tasks[animation.activeTaskIndex]
+  const debugRig = robotArmConfig.debug
 
   return (
     <div className={`robot-workforce ${animation.workforceOnline ? 'robot-workforce--online' : ''}`} aria-label="AI Banana actively handling business tasks">
@@ -15,7 +15,7 @@ export function RobotWorkforce() {
         <div className="robot-workforce__halo" />
         <div className="robot-rig">
           <div className="robot-rig__rear-arms">
-            {siteConfig.robotArmAnimation.tasks.map((task, index) => (
+            {robotArmConfig.tasks.map((task, index) => (
               <RobotArm
                 key={task.id}
                 id={task.id}
@@ -28,7 +28,7 @@ export function RobotWorkforce() {
               />
             ))}
           </div>
-          <img className="robot-rig__body" src={siteConfig.assets.robotBody} alt="AI Banana Master robot" width="1536" height="1024" fetchPriority="high" decoding="async" />
+          <img className="robot-rig__body" src={robotArmConfig.body} alt="AI Banana Master robot" width="1536" height="1024" fetchPriority="high" decoding="async" />
           {debugRig && <><span className="robot-rig__centreline" /><span className="robot-rig__label">Character rig</span></>}
         </div>
         <div className={`robot-workforce__status ${animation.workforceOnline ? 'robot-workforce__status--online' : ''}`} aria-live="polite">

@@ -6,13 +6,8 @@ import everlyPortrait from '../assets/team-everly.webp'
 import finleyPortrait from '../assets/team-finley.webp'
 import lashayPortrait from '../assets/team-lashay.webp'
 import savannahPortrait from '../assets/team-savannah.webp'
-import analyticsArm from '../../assets/animation/generated/analytics-arm.png'
-import robotBody from '../../assets/animation/generated/body.png'
-import calendarArm from '../../assets/animation/generated/calendar-arm.png'
-import crmArm from '../../assets/animation/generated/crm-arm.png'
-import emailArm from '../../assets/animation/generated/email-arm.png'
-import receptionistArm from '../../assets/animation/generated/receptionist-arm.png'
-import workflowArm from '../../assets/animation/generated/workflow-arm.png'
+import chiefOfStaffPortrait from '../../assets/characters/AI-Banana_ChiefOfStaff.png'
+import powerModeHero from '../../assets/characters/AI-Banana_Power_Mode.png'
 
 export const siteConfig = {
   company: 'AI Banana',
@@ -24,7 +19,8 @@ export const siteConfig = {
     logo: transparentLogo,
     heroCharacter,
     masterRenderSource: 'assets/characters/Master Character Render v1.png',
-    robotBody,
+    powerModeHero,
+    chiefOfStaffPortrait,
   },
   links: {
     wixBooking: '',
@@ -47,20 +43,6 @@ export const siteConfig = {
   booking: {
     primaryLabel: 'Book a Strategy Call',
     secondaryLabel: 'Book Through Our AI Receptionist',
-  },
-  robotArmAnimation: {
-    debug: false,
-    cycleDuration: 17500,
-    finalAt: 13250,
-    resetAt: 16000,
-    tasks: [
-      { id: 'receptionist', title: 'Incoming Phone Call', incoming: 'Waiting', action: 'Connecting call', result: 'Answered', asset: receptionistArm, start: 900, duration: 2200, rig: { anchorX: 43, anchorY: 27, width: 76, rotationRetracted: 13, rotationDeployed: -5, translateX: 7, translateY: 5, transformOriginX: 92, transformOriginY: 22, zIndex: 3, flipX: true } },
-      { id: 'email', title: 'New Email', incoming: 'Waiting', action: 'Preparing reply', result: 'Sent', asset: emailArm, start: 3600, duration: 2200, rig: { anchorX: 57, anchorY: 27, width: 76, rotationRetracted: -13, rotationDeployed: 5, translateX: -7, translateY: 5, transformOriginX: 10, transformOriginY: 18, zIndex: 3, flipX: true } },
-      { id: 'calendar', title: 'Meeting Request', incoming: 'Waiting', action: 'Checking calendar', result: 'Scheduled', asset: calendarArm, start: 6200, duration: 1800, rig: { anchorX: 42, anchorY: 32, width: 72, rotationRetracted: 9, rotationDeployed: -10, translateX: 8, translateY: 2, transformOriginX: 94, transformOriginY: 25, zIndex: 2, flipX: true } },
-      { id: 'crm', title: 'CRM Update', incoming: 'Waiting', action: 'Updating customer', result: 'Saved', asset: crmArm, start: 8300, duration: 1500, rig: { anchorX: 58, anchorY: 32, width: 72, rotationRetracted: -9, rotationDeployed: 10, translateX: -8, translateY: 2, transformOriginX: 7, transformOriginY: 26, zIndex: 2, flipX: true } },
-      { id: 'workflow', title: 'Workflow Automation', incoming: 'Waiting', action: 'Running automation', result: 'Completed', asset: workflowArm, start: 10000, duration: 1350, rig: { anchorX: 43, anchorY: 37, width: 68, rotationRetracted: 8, rotationDeployed: -14, translateX: 7, translateY: -2, transformOriginX: 95, transformOriginY: 36, zIndex: 1, flipX: true } },
-      { id: 'analytics', title: 'Analytics', incoming: 'Waiting', action: 'Building report', result: 'Report Ready', asset: analyticsArm, start: 11500, duration: 1350, rig: { anchorX: 57, anchorY: 37, width: 68, rotationRetracted: -8, rotationDeployed: 14, translateX: -7, translateY: -2, transformOriginX: 8, transformOriginY: 25, zIndex: 1, flipX: true } },
-    ],
   },
   navigation: [
     { label: 'Home', href: '#home' },
@@ -138,8 +120,8 @@ export const siteConfig = {
   founderStory: {
     eyebrow: 'The story behind the name',
     title: 'Why the Name AI Banana?',
-    body: 'Some grandmothers are called Granny, Glamma, or Nana. Shayla’s grandbabies call her Banana—short for “Bad Nana.” That grandmother name inspired a brand built around noticing what needs to be handled and taking care of it before it becomes a problem.',
-    closing: 'That is the AI Banana promise: thoughtful support, handled before it becomes a problem.',
+    body: 'Some grandmothers are called Granny, Glamma, or Nana. Shayla’s grandbabies call her Banana. Banana means “Bad Nana.” That grandmother name inspired a brand built around noticing what needs to be handled and taking care of it before it becomes a problem.',
+    closing: 'This is the AI Banana brand promise: thoughtful, supportive, handled before the problem arises.',
     founder: 'Shayla Davis',
     role: 'Founder, AI Banana',
     principles: ['Show up early', 'Notice what matters', 'Make hard things simpler'],

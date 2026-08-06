@@ -1,4 +1,4 @@
-import { CheckCircle2, Network, Quote, Sparkles } from 'lucide-react'
+import { CheckCircle2, Quote, Sparkles } from 'lucide-react'
 import { Button } from '../components/Button'
 import { Reveal } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
@@ -10,7 +10,7 @@ export function Workforce() {
       <div className="container">
         <Reveal><SectionHeading eyebrow="Meet your AI workforce" title="An Entire Team. One Shared Mission." body="Not another chatbot. A coordinated group of AI Employees, each with a clear role in helping your business run better." align="center" /></Reveal>
         <Reveal className="workforce-lead">
-          <div className="workforce-lead__icon"><Network /></div>
+          <div className="workforce-lead__portrait"><img src={siteConfig.assets.chiefOfStaffPortrait} alt="AI Banana, Chief of Staff" width="256" height="256" loading="lazy" decoding="async" /></div>
           <div><small>Chief of Staff</small><strong>AI Banana</strong></div>
           <span>Coordinates your AI workforce</span>
         </Reveal>
@@ -39,8 +39,8 @@ export function WhyUs() {
         <Reveal className="why-visual">
           <div className="why-visual__panel">
             <div className="why-visual__mark"><Sparkles /></div>
-            <p>We don't install software.</p>
-            <h3>We build customised AI Employees trained specifically for your business.</h3>
+            <p>Built around your business.</p>
+            <h3>We build customized AI Employees designed around your workflows, voice, and goals.</h3>
             <div className="why-visual__footer"><span><i />Strategy</span><span><i />Build</span><span><i />Support</span></div>
           </div>
           <div className="why-visual__outline" />
