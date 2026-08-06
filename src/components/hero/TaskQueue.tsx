@@ -17,7 +17,7 @@ export function TaskQueue({ activePairIndex, visiblePairs, phase }: TaskQueuePro
         const Icon = icons[task.id]
         const complete = task.pair < visiblePairs
         const active = task.pair === activePairIndex
-        const status = complete ? task.result : active ? phase === 'retracting' ? task.result : task.action : task.incoming
+        const status = complete ? task.result : active ? task.action : task.incoming
         return (
           <div className={`robot-task ${active ? 'robot-task--active' : ''} ${complete ? 'robot-task--complete' : ''}`} key={task.id}>
             <span className="robot-task__icon">{complete ? <Check /> : <Icon />}</span>

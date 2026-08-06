@@ -7,6 +7,7 @@ import finleyPortrait from '../assets/team-finley.webp'
 import lashayPortrait from '../assets/team-lashay.webp'
 import savannahPortrait from '../assets/team-savannah.webp'
 import chiefOfStaffPortrait from '../../assets/characters/AI-Banana_ChiefOfStaff.png'
+import powerModeHero from '../../assets/characters/AI-Banana_Power_Mode.png'
 
 export const siteConfig = {
   company: 'AI Banana',
@@ -19,6 +20,7 @@ export const siteConfig = {
     heroCharacter,
     masterRenderSource: 'assets/characters/Master Character Render v1.png',
     chiefOfStaffPortrait,
+    powerModeHero,
   },
   links: {
     wixBooking: '',

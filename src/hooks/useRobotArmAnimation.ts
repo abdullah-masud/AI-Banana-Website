@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-import { robotArmConfig } from '../data/robotArmConfig'
 import { usePrefersReducedMotion } from './usePrefersReducedMotion'
 
-export type ArmPhase = 'idle' | 'deploying' | 'completed' | 'retracting'
+export type ArmPhase = 'idle' | 'deploying' | 'completed'
 
 export function useRobotArmAnimation() {
   const reducedMotion = usePrefersReducedMotion()
@@ -18,36 +17,18 @@ export function useRobotArmAnimation() {
       return
     }
 
-    let timers: number[] = []
+    const timers: number[] = []
     const schedule = (callback: () => void, delay: number) => timers.push(window.setTimeout(callback, delay))
-
-    const runCycle = () => {
-      timers.forEach(window.clearTimeout)
-      timers = []
-      setVisiblePairs(0)
-      setActivePairIndex(null)
-      setPhase('idle')
-
-      const deploy = (pair: number, start: number, duration: number) => {
-        schedule(() => { setActivePairIndex(pair); setPhase('deploying') }, start)
-        schedule(() => { setVisiblePairs(pair + 1); setActivePairIndex(null); setPhase('completed') }, start + duration)
-      }
-      const retract = (pair: number, start: number, duration: number) => {
-        schedule(() => { setActivePairIndex(pair); setPhase('retracting') }, start)
-        schedule(() => { setVisiblePairs(pair); setActivePairIndex(null); setPhase(pair ? 'completed' : 'idle') }, start + duration)
-      }
-
-      deploy(0, 900, 700)
-      deploy(1, 1900, 600)
-      deploy(2, 2800, 500)
-      retract(2, 5800, 500)
-      retract(1, 6450, 600)
-      retract(0, 7200, 700)
+    const deploy = (pair: number, start: number, duration: number) => {
+      schedule(() => { setActivePairIndex(pair); setPhase('deploying') }, start)
+      schedule(() => { setVisiblePairs(pair + 1); setActivePairIndex(null); setPhase('completed') }, start + duration)
     }
 
-    runCycle()
-    const cycle = window.setInterval(runCycle, robotArmConfig.cycleDuration)
-    return () => { timers.forEach(window.clearTimeout); window.clearInterval(cycle) }
+    deploy(0, 900, 700)
+    deploy(1, 1900, 600)
+    deploy(2, 2800, 500)
+
+    return () => timers.forEach(window.clearTimeout)
   }, [reducedMotion])
 
   return {
