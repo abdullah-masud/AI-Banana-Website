@@ -34,7 +34,7 @@ export function Navbar() {
         <nav aria-label="Primary navigation" className="navbar__desktop-nav">
           {siteConfig.navigation.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
         </nav>
-        <Button href={siteConfig.links.wixBooking} className="navbar__cta">{siteConfig.booking.primaryLabel}</Button>
+        <Button href={siteConfig.links.growthSessionBooking} className="navbar__cta">{siteConfig.booking.primaryLabel}</Button>
         <button
           type="button"
           className="navbar__menu-button"
@@ -51,7 +51,7 @@ export function Navbar() {
           {siteConfig.navigation.map((item) => (
             <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>
           ))}
-          <Button href={siteConfig.links.wixBooking} className="mobile-menu__cta" onClick={() => setOpen(false)}>{siteConfig.booking.primaryLabel}</Button>
+          <Button href={siteConfig.links.growthSessionBooking} className="mobile-menu__cta" onClick={() => setOpen(false)}>{siteConfig.booking.primaryLabel}</Button>
         </nav>
       </div>
     </header>

@@ -12,7 +12,6 @@
     <meta property="og:title" content="AI Banana | We Build Your AI Workforce™" />
     <meta property="og:description" content="AI Automation That Works. Build a custom AI workforce designed around your business." />
     <meta property="og:image" content="/social-preview.png" />
-    <meta property="og:url" content="https://example.com/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="AI Banana | We Build Your AI Workforce™" />
     <meta name="twitter:description" content="AI Automation That Works. Build a custom AI workforce designed around your business." />
@@ -23,21 +22,17 @@
         "@graph": [
           {
             "@type": "Organization",
-            "@id": "https://example.com/#organization",
             "name": "AI Banana",
-            "url": "https://example.com/",
-            "logo": "https://example.com/social-preview.png",
             "slogan": "We Build Your AI Workforce™",
             "description": "AI Banana builds custom AI Employees that automate repetitive business tasks."
           },
           {
             "@type": "Service",
-            "@id": "https://example.com/#service",
             "name": "Custom AI Workforce Design and Deployment",
-            "provider": { "@id": "https://example.com/#organization" },
+            "provider": { "@type": "Organization", "name": "AI Banana" },
             "serviceType": "Business process automation and custom AI employees",
             "description": "Custom AI Employees for calls, lead follow-up, scheduling, customer support, CRM management, email, and operations.",
-            "areaServed": "[Service area]"
+            "areaServed": "United States"
           }
         ]
       }

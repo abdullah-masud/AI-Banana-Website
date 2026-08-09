@@ -39,8 +39,8 @@ export function WhyUs() {
         <Reveal className="why-visual">
           <div className="why-visual__panel">
             <div className="why-visual__mark"><Sparkles /></div>
-            <p>Built around your business.</p>
-            <h3>We build customized AI Employees designed around your workflows, voice, and goals.</h3>
+            <p>We don’t install software.</p>
+            <h3>We build customised AI Employees trained specifically for your business.</h3>
             <div className="why-visual__footer"><span><i />Strategy</span><span><i />Build</span><span><i />Support</span></div>
           </div>
           <div className="why-visual__outline" />
@@ -50,7 +50,7 @@ export function WhyUs() {
           <div className="why-list">
             {siteConfig.whyUs.map((item) => <div key={item.title}><CheckCircle2 /><span><strong>{item.title}</strong><p>{item.description}</p></span></div>)}
           </div>
-          <Button href={siteConfig.links.wixBooking} variant="secondary">Explore Your AI Workforce</Button>
+          <Button href={siteConfig.links.growthSessionBooking} variant="secondary">{siteConfig.booking.primaryLabel}</Button>
         </Reveal>
       </div>
     </section>

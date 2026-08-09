@@ -1,13 +1,13 @@
 import { CheckCircle2 } from 'lucide-react'
-import { robotArmConfig } from '../../data/robotArmConfig'
+import { robotTaskConfig } from '../../data/robotTaskConfig'
 import { siteConfig } from '../../data/siteConfig'
 import { useRobotArmAnimation } from '../../hooks/useRobotArmAnimation'
 import { TaskQueue } from './TaskQueue'
 
 export function RobotWorkforce() {
   const animation = useRobotArmAnimation()
-  const activePair = animation.activePairIndex === null ? null : robotArmConfig.pairs[animation.activePairIndex]
-  const latestResult = animation.visiblePairs ? robotArmConfig.pairs[animation.visiblePairs - 1].result : 'Working quietly.'
+  const activePair = animation.activePairIndex === null ? null : robotTaskConfig.pairs[animation.activePairIndex]
+  const latestResult = animation.visiblePairs ? robotTaskConfig.pairs[animation.visiblePairs - 1].result : 'Working quietly.'
   const handledText = animation.workforceOnline ? 'Everything handled.' : activePair?.action ?? latestResult
 
   return (

@@ -13,7 +13,7 @@ export function FinalCta() {
           <h2>Ready to Build Your<br /><em>AI Workforce?</em></h2>
           <p>Let's find the repetitive work holding your business back—and design the team that takes it from here.</p>
           <div className="final-cta__actions">
-            <Button href={siteConfig.links.wixBooking} variant="light">{siteConfig.booking.primaryLabel}</Button>
+            <Button href={siteConfig.links.growthSessionBooking} variant="light">{siteConfig.booking.primaryLabel}</Button>
             <Button href={siteConfig.links.aiReceptionistBooking} variant="secondary">{siteConfig.booking.secondaryLabel}</Button>
           </div>
           <small>No obligation. Just a focused conversation about what's possible.</small>
@@ -44,17 +44,19 @@ export function Footer() {
         </div>
         <div className="footer__column">
           <h3>Connect</h3>
-          <a href={siteConfig.links.facebook} target="_blank" rel="noreferrer" aria-label="AI Banana on Facebook"><Facebook />Facebook<ArrowUpRight className="footer__external" /></a>
-          <a href={siteConfig.links.instagram} target="_blank" rel="noreferrer" aria-label="AI Banana on Instagram"><Instagram />Instagram<ArrowUpRight className="footer__external" /></a>
-          <a href={siteConfig.links.tiktok} target="_blank" rel="noreferrer" aria-label="AI Banana on TikTok"><Music2 />TikTok<ArrowUpRight className="footer__external" /></a>
+          <a href={siteConfig.links.facebook} target="_blank" rel="noopener noreferrer" aria-label="AI Banana on Facebook"><Facebook />Facebook<ArrowUpRight className="footer__external" /></a>
+          <a href={siteConfig.links.instagram} target="_blank" rel="noopener noreferrer" aria-label="AI Banana on Instagram"><Instagram />Instagram<ArrowUpRight className="footer__external" /></a>
+          <a href={siteConfig.links.tiktok} target="_blank" rel="noopener noreferrer" aria-label="AI Banana on TikTok"><Music2 />TikTok<ArrowUpRight className="footer__external" /></a>
         </div>
       </div>
       <div className="container footer__bottom">
         <span>© {new Date().getFullYear()} AI Banana. All rights reserved.</span>
-        <div>
-          {siteConfig.links.privacy ? <a href={siteConfig.links.privacy}>Privacy</a> : <span>Privacy</span>}
-          {siteConfig.links.terms ? <a href={siteConfig.links.terms}>Terms</a> : <span>Terms</span>}
-        </div>
+        {(siteConfig.links.privacy || siteConfig.links.terms) && (
+          <div>
+            {siteConfig.links.privacy && <a href={siteConfig.links.privacy}>Privacy</a>}
+            {siteConfig.links.terms && <a href={siteConfig.links.terms}>Terms</a>}
+          </div>
+        )}
       </div>
     </footer>
   )

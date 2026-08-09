@@ -1,5 +1,5 @@
 import { BarChart3, CalendarDays, Check, Database, Mail, Phone, Workflow } from 'lucide-react'
-import { robotArmConfig } from '../../data/robotArmConfig'
+import { robotTaskConfig } from '../../data/robotTaskConfig'
 import type { ArmPhase } from '../../hooks/useRobotArmAnimation'
 
 const icons = { receptionist: Phone, email: Mail, calendar: CalendarDays, crm: Database, workflow: Workflow, analytics: BarChart3 }
@@ -13,7 +13,7 @@ type TaskQueueProps = {
 export function TaskQueue({ activePairIndex, visiblePairs, phase }: TaskQueueProps) {
   return (
     <div className="robot-task-queue" aria-label="AI workforce task queue">
-      {robotArmConfig.tasks.map((task) => {
+      {robotTaskConfig.tasks.map((task) => {
         const Icon = icons[task.id]
         const complete = task.pair < visiblePairs
         const active = task.pair === activePairIndex
