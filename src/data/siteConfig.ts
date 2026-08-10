@@ -9,6 +9,8 @@ import savannahPortrait from '../assets/team-savannah.webp'
 import chiefOfStaffPortrait from '../../assets/characters/AI-Banana_ChiefOfStaff.png'
 import powerModeHero from '../../assets/characters/AI-Banana_Power_Mode_HiRes.png'
 
+export const BOOKING_URL = 'https://api.growthhub365.com/widget/booking/JZYcI6PhYYkW8aBXVgon'
+
 export const siteConfig = {
   company: 'AI Banana',
   tagline: 'We Build Your AI Workforce™',
@@ -23,7 +25,7 @@ export const siteConfig = {
     powerModeHero,
   },
   links: {
-    growthSessionBooking: import.meta.env.VITE_GROWTH_SESSION_BOOKING_URL?.trim() ?? '',
+    growthSessionBooking: BOOKING_URL,
     aiReceptionistBooking: import.meta.env.VITE_AI_RECEPTIONIST_BOOKING_URL?.trim() ?? '',
     demoPhone: import.meta.env.VITE_DEMO_PHONE_HREF?.trim() ?? '',
     email: 'mailto:connect@get-aibanana.com',
