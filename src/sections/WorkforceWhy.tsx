@@ -14,6 +14,7 @@ export function Workforce() {
           <div><small>Chief of Staff</small><strong>AI Banana</strong></div>
           <span>Coordinates your AI workforce</span>
         </Reveal>
+        <p className="workforce-caption">Illustrative AI workforce — roles are customized to your business.</p>
         <div className="workforce-connector" />
         <div className="workforce-grid">
           {siteConfig.workforce.map((member, index) => (

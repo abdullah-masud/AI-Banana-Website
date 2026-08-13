@@ -321,6 +321,7 @@ p { text-wrap: pretty; }
 .workforce-lead small { color: #778396; font-size: .68rem; text-transform: uppercase; letter-spacing: .09em; }
 .workforce-lead strong { margin-top: 2px; font-size: .92rem; color: var(--navy); }
 .workforce-lead > span { grid-column: 2; padding-top: 10px; border-top: 1px solid #edf0f4; color: #6f7b8d; text-align: left; font-size: .72rem; }
+.workforce-caption { max-width: 520px; margin: 18px auto 0; color: #6f7b8d; font-size: .78rem; line-height: 1.55; text-align: center; }
 .workforce-connector { width: 75%; height: 52px; margin: 0 auto; border: 1px solid #d9dfe8; border-bottom: 0; border-radius: 12px 12px 0 0; transform: translateY(22px); }
 .workforce-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 12px; }
 .workforce-card { position: relative; min-height: 258px; padding: 28px 16px; text-align: center; border: 1px solid #e2e6ed; border-radius: 15px; background: #fff; transition: transform .35s var(--ease-premium), box-shadow .35s var(--ease-premium), border-color .3s ease; }
