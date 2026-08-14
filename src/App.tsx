@@ -1,4 +1,5 @@
 import { Navbar } from './components/Navbar'
+import { LeadConnectorChat } from './components/LeadConnectorChat'
 import { Benefits, Challenge } from './sections/BenefitsChallenge'
 import { FinalCta, Footer } from './sections/FinalCtaFooter'
 import { FounderStory } from './sections/FounderStory'
@@ -27,6 +28,7 @@ export function App() {
         <FinalCta />
       </main>
       <Footer />
+      <LeadConnectorChat />
     </>
   )
 }
