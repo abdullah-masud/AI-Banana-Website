@@ -7,7 +7,6 @@ import finleyPortrait from '../assets/team-finley.webp'
 import lashayPortrait from '../assets/team-lashay.webp'
 import savannahPortrait from '../assets/team-savannah.webp'
 import chiefOfStaffPortrait from '../../assets/characters/AI-Banana_ChiefOfStaff.png'
-import powerModeHero from '../../assets/characters/AI-Banana_Power_Mode_HiRes.png'
 
 export const BOOKING_URL = 'https://api.growthhub365.com/widget/booking/JZYcI6PhYYkW8aBXVgon'
 
@@ -22,7 +21,6 @@ export const siteConfig = {
     heroCharacter,
     masterRenderSource: 'assets/characters/Master Character Render v1.png',
     chiefOfStaffPortrait,
-    powerModeHero,
   },
   links: {
     growthSessionBooking: BOOKING_URL,
@@ -45,6 +43,13 @@ export const siteConfig = {
   booking: {
     primaryLabel: 'Book Your Free Growth Session',
     secondaryLabel: 'Book Through Our AI Receptionist',
+  },
+  heroTasks: ['Call answered', 'Lead qualified', 'Appointment booked', 'CRM updated', 'Follow-up sent', 'Report prepared'],
+  heroActivation: {
+    taskTimings: [500, 1450, 2400, 2900, 3250, 3600],
+    completedAt: 4000,
+    activatingLabel: 'Activating workforce',
+    completedLabel: 'AI Workforce Online',
   },
   navigation: [
     { label: 'Home', href: '#home' },

@@ -1,9 +1,32 @@
 import { CheckCircle2, Play } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import { Button } from '../components/Button'
-import { RobotWorkforce } from '../components/hero/RobotWorkforce'
 import { siteConfig } from '../data/siteConfig'
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
 
 export function Hero() {
+  const reducedMotion = usePrefersReducedMotion()
+  const [activeTaskCount, setActiveTaskCount] = useState(0)
+  const [workforceOnline, setWorkforceOnline] = useState(false)
+
+  useEffect(() => {
+    const activation = siteConfig.heroActivation
+
+    if (reducedMotion) {
+      setActiveTaskCount(siteConfig.heroTasks.length)
+      setWorkforceOnline(true)
+      return
+    }
+
+    const timers: number[] = []
+    activation.taskTimings.forEach((timing, index) => {
+      timers.push(window.setTimeout(() => setActiveTaskCount(index + 1), timing))
+    })
+    timers.push(window.setTimeout(() => setWorkforceOnline(true), activation.completedAt))
+
+    return () => timers.forEach(window.clearTimeout)
+  }, [reducedMotion])
+
   return (
     <section className="hero" id="home">
       <div className="hero__glow hero__glow--one" />
@@ -24,7 +47,24 @@ export function Hero() {
             ))}
           </div>
         </div>
-        <div className="hero__visual"><RobotWorkforce /></div>
+        <div className="hero__visual" aria-label="AI Banana workforce officer">
+          <div className="hero__image-shell">
+            <img src={siteConfig.assets.heroCharacter} alt="AI Banana, a professional AI Workforce Officer" width="820" height="1230" fetchPriority="high" decoding="async" />
+            <div className={`hero__status-card hero__status-card--top ${workforceOnline ? 'hero__status-card--online' : ''}`} aria-live="polite">
+              <span className="status-pulse" />
+              <div><small>AI Workforce</small><strong>{workforceOnline ? siteConfig.heroActivation.completedLabel : siteConfig.heroActivation.activatingLabel}</strong></div>
+            </div>
+            <div className="hero__status-card hero__status-card--bottom"><CheckCircle2 /><div><small>Task status</small><strong>Already handled.</strong></div></div>
+            <div className="hero__task-sequence" aria-label="AI task automation sequence">
+              {siteConfig.heroTasks.map((task, index) => (
+                <span key={task} className={index < activeTaskCount ? 'hero__task--active' : ''} aria-hidden={index >= activeTaskCount}>
+                  <i><CheckCircle2 /></i>{task}
+                </span>
+              ))}
+            </div>
+          </div>
+          <p className="hero__signature">“I've already handled it.”</p>
+        </div>
       </div>
       <div className="hero__bottom-fade" />
     </section>

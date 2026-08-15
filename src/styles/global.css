@@ -582,7 +582,8 @@ p { text-wrap: pretty; }
   .hero__proof { max-width: 285px; margin-inline: auto; }
   .hero__status-card--top { right: -12px; }
   .hero__status-card--bottom { left: -12px; }
-  .hero__task-sequence { display: none; }
+  .hero__task-sequence { top: 150px; right: 0; width: 128px; }
+  .hero__task-sequence > span { min-height: 29px; padding: 6px 7px; font-size: .56rem; }
   .robot-task-queue { grid-template-columns: repeat(2,1fr); }
   .robot-workforce__signature { bottom: 126px; }
   .footer__top { grid-template-columns: 1fr; }

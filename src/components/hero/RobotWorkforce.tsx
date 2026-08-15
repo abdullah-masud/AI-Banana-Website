@@ -1,6 +1,6 @@
 import { CheckCircle2 } from 'lucide-react'
+import powerModeHero from '../../../assets/characters/AI-Banana_Power_Mode_HiRes.png'
 import { robotTaskConfig } from '../../data/robotTaskConfig'
-import { siteConfig } from '../../data/siteConfig'
 import { useRobotArmAnimation } from '../../hooks/useRobotArmAnimation'
 import { TaskQueue } from './TaskQueue'
 
@@ -14,7 +14,7 @@ export function RobotWorkforce() {
     <div className={`robot-workforce ${animation.workforceOnline ? 'robot-workforce--online' : ''}`} aria-label="AI Banana Power Mode with six active business capabilities">
       <div className="robot-workforce__stage robot-workforce__stage--power-mode">
         <div className="robot-workforce__halo" />
-        <img className="robot-workforce__power-mode" src={siteConfig.assets.powerModeHero} alt="AI Banana in Power Mode with six proportioned capability arms" width="578" height="718" fetchPriority="high" decoding="async" />
+        <img className="robot-workforce__power-mode" src={powerModeHero} alt="AI Banana in Power Mode with six proportioned capability arms" width="578" height="718" fetchPriority="high" decoding="async" />
         <div className={`robot-workforce__status ${animation.workforceOnline ? 'robot-workforce__status--online' : ''}`} aria-live="polite">
           <span className="status-pulse" />
           <div><small>{activePair?.label ?? 'AI Workforce'}</small><strong>{animation.workforceOnline ? 'AI Workforce Online' : activePair?.action ?? (animation.visiblePairs ? 'Capabilities active' : 'Ready')}</strong></div>
