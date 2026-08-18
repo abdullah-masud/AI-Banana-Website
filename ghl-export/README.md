@@ -12,6 +12,8 @@
 
 Do not wrap the embed in additional `<html>`, `<head>`, or `<body>` tags. The export uses a Shadow DOM boundary so GHL page-builder CSS cannot restyle the AI Banana website, and the website's CSS cannot restyle the surrounding GHL page.
 
+The embed also includes the same browser-reset rules used by the production Tailwind build. Its host uses a viewport-width full-bleed treatment, and the runtime removes horizontal padding/max-width constraints only from the Custom HTML element's immediate GHL wrapper chain. This prevents GHL Section/Row/Column defaults from narrowing or offsetting the hero, footer, and full-width section backgrounds.
+
 ## External assets
 
 The export currently uses the stable production alias `https://ai-banana-website.vercel.app` for nine optimized images and three Space Grotesk font files. This makes the embed ready to paste now while the current Vercel site remains online.
