@@ -2,6 +2,7 @@ import { ArrowUpRight, Facebook, Instagram, Mail, MapPin, Music2, Phone } from '
 import { Button } from '../components/Button'
 import { Reveal } from '../components/Reveal'
 import { siteConfig } from '../data/siteConfig'
+import { openLeadConnectorChat } from '../utils/openLeadConnectorChat'
 
 export function FinalCta() {
   return (
@@ -14,7 +15,7 @@ export function FinalCta() {
           <p>Let's find the repetitive work holding your business back—and design the team that takes it from here.</p>
           <div className="final-cta__actions">
             <Button href={siteConfig.links.growthSessionBooking} variant="light">{siteConfig.booking.primaryLabel}</Button>
-            <Button href={siteConfig.links.aiReceptionistBooking} variant="secondary">{siteConfig.booking.secondaryLabel}</Button>
+            <Button href={siteConfig.links.aiReceptionistBooking} variant="secondary" className="button--chat-trigger" onClick={openLeadConnectorChat}>{siteConfig.booking.secondaryLabel}</Button>
           </div>
           <small>No obligation. Just a focused conversation about what's possible.</small>
         </Reveal>

@@ -4,6 +4,7 @@ import { Icon } from '../components/Icon'
 import { Reveal } from '../components/Reveal'
 import { SectionHeading } from '../components/SectionHeading'
 import { siteConfig } from '../data/siteConfig'
+import { openAiReceptionistWidget } from '../utils/openAiReceptionistWidget'
 
 export function Benefits() {
   return (
@@ -37,11 +38,7 @@ export function Challenge() {
               <h3>AI Receptionist</h3>
               <p>Ready to take your call</p>
               <div className="voice-wave" aria-hidden="true">{Array.from({ length: 17 }, (_, i) => <i key={i} />)}</div>
-              {siteConfig.links.demoPhone ? (
-                <a href={siteConfig.links.demoPhone} className="phone-mockup__call" aria-label="Call the AI Receptionist"><PhoneCall fill="currentColor" /></a>
-              ) : (
-                <span className="phone-mockup__call phone-mockup__call--disabled" aria-label="Demo phone number coming soon"><PhoneCall fill="currentColor" /></span>
-              )}
+              <button type="button" className="phone-mockup__call" aria-label="Call the AI Receptionist" onClick={openAiReceptionistWidget}><PhoneCall fill="currentColor" /></button>
               <small>{siteConfig.contact.demoPhone}</small>
             </div>
           </div>
@@ -54,7 +51,7 @@ export function Challenge() {
           <div className="challenge-prompts">
             {siteConfig.challengePrompts.map((prompt) => <span key={prompt}><Check size={14} />{prompt}</span>)}
           </div>
-          <Button href={siteConfig.links.demoPhone}>Call the AI Receptionist</Button>
+          <Button href="" onClick={openAiReceptionistWidget}>Call the AI Receptionist</Button>
           <p className="challenge-copy__note">No sales representative will answer. You'll speak directly with the live AI demonstration.</p>
         </Reveal>
       </div>

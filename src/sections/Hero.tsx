@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Button } from '../components/Button'
 import { siteConfig } from '../data/siteConfig'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { openLeadConnectorChat } from '../utils/openLeadConnectorChat'
 
 export function Hero() {
   const reducedMotion = usePrefersReducedMotion()
@@ -38,7 +39,7 @@ export function Hero() {
           <p className="hero__description">{siteConfig.description}</p>
           <div className="hero__actions">
             <Button href={siteConfig.links.growthSessionBooking}>{siteConfig.booking.primaryLabel}</Button>
-            <Button href={siteConfig.links.aiReceptionistBooking} variant="secondary">{siteConfig.booking.secondaryLabel}</Button>
+            <Button href={siteConfig.links.aiReceptionistBooking} variant="secondary" className="button--chat-trigger" onClick={openLeadConnectorChat}>{siteConfig.booking.secondaryLabel}</Button>
           </div>
           <a className="hero__video-link" href="#how-it-works"><span><Play size={13} fill="currentColor" /></span>See How It Works</a>
           <div className="hero__proof" aria-label="Service qualities">

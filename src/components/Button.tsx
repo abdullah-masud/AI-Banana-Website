@@ -10,6 +10,15 @@ type ButtonProps = {
 }
 
 export function Button({ href, children, variant = 'primary', className = '', onClick }: ButtonProps) {
+  if (!href && onClick) {
+    return (
+      <button type="button" className={`button button--${variant} ${className}`} onClick={onClick}>
+        <span>{children}</span>
+        <ArrowRight aria-hidden="true" size={17} strokeWidth={2} />
+      </button>
+    )
+  }
+
   if (!href) {
     return (
       <span className={`button button--${variant} button--disabled ${className}`} aria-disabled="true">

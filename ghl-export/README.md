@@ -38,22 +38,23 @@ All current asset URLs are HTTPS and publicly accessible. No localhost, Vite, or
 ## Preserved integrations
 
 - Every visible **Book Your Free Growth Session** CTA uses the permanent calendar URL: `https://api.growthhub365.com/widget/booking/JZYcI6PhYYkW8aBXVgon`.
-- The LeadConnector chat loader is added asynchronously once with widget ID `6a7cd8798ce6e21783d93638` and resource URL `https://widgets.leadconnectorhq.com/chat-widget/loader.js`.
+- The general LeadConnector chat loader is added asynchronously once with widget ID `6a7cd8798ce6e21783d93638` and resource URL `https://widgets.leadconnectorhq.com/chat-widget/loader.js`.
+- The AI Receptionist test widget (`6a871a3c07754ad08addc62b`) loads only when **Call the AI Receptionist** is selected. Its API is captured for that CTA, while the general widget remains the persistent bottom-right launcher.
 - The duplicate-loader guard allows the same embed to coexist safely with a chat widget installed globally in GoHighLevel.
 - Internal navigation, the mobile menu, sticky navbar state, reveal effects, hero task activation, and reduced-motion behavior are implemented in vanilla JavaScript.
 
 ## Existing intentionally disabled actions
 
-The production configuration does not yet contain an AI Receptionist booking URL or demo phone number. To preserve the live site's behavior exactly, the following remain visible but disabled:
+The production configuration does not yet contain a demo phone number. The following behavior is configured:
 
-- **Book Through Our AI Receptionist**
-- **Call the AI Receptionist**
+- **Book Through Our AI Receptionist** opens the existing general website chat widget.
+- **Call the AI Receptionist** opens the separate AI Receptionist test widget on demand.
 
-They should only be enabled after Shayla supplies confirmed destinations.
+The visible demo-number text remains unchanged until Shayla supplies a confirmed phone number.
 
 ## GHL page settings
 
 - Use a full-width page/section without a builder header or footer; the embed already includes both.
 - Disable GHL's default section max-width and padding around the custom-code element.
-- Avoid adding a second LeadConnector widget with a different widget ID on the same page.
+- Do not separately install either LeadConnector widget in GHL page settings; the embed manages both IDs and prevents the on-demand AI Receptionist widget from replacing the general widget API.
 - Keep the Vercel production project online until the listed media and fonts are moved to permanent GHL-hosted URLs.

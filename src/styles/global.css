@@ -78,6 +78,7 @@ p { text-wrap: pretty; }
 .button--secondary { border-color: #cad1dc; background: var(--white); color: var(--navy); }
 .button--secondary:hover { border-color: var(--gold); box-shadow: 0 12px 30px rgba(15,34,95,.09); }
 .button--light { background: var(--white); color: var(--navy); box-shadow: 0 12px 34px rgba(0,0,0,.18); }
+.button--chat-trigger { appearance: none; position: relative; z-index: 1; cursor: pointer; pointer-events: auto; }
 
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease-premium), transform .8s var(--ease-premium); }
 .reveal--visible { opacity: 1; transform: translateY(0); }
@@ -264,7 +265,7 @@ p { text-wrap: pretty; }
 .voice-wave i { display: block; width: 3px; height: calc(8px + var(--h, 10px)); background: #72c3ff; border-radius: 4px; animation: voice 1.3s ease-in-out infinite alternate; }
 .voice-wave i:nth-child(3n) { --h: 24px; animation-delay: -.5s; }.voice-wave i:nth-child(4n) { --h: 14px; animation-delay: -.8s; }.voice-wave i:nth-child(5n) { --h: 32px; animation-delay: -.2s; }
 @keyframes voice { to { transform: scaleY(.45); opacity: .5; } }
-.phone-mockup__call { display: grid; place-items: center; width: 54px; height: 54px; margin-top: 31px; border-radius: 50%; background: #40b879; color: white; box-shadow: 0 10px 24px rgba(64,184,121,.32); }
+.phone-mockup__call { appearance: none; display: grid; place-items: center; width: 54px; height: 54px; margin-top: 31px; padding: 0; border: 0; border-radius: 50%; background: #40b879; color: white; cursor: pointer; box-shadow: 0 10px 24px rgba(64,184,121,.32); }
 .phone-mockup__call svg { width: 21px; }
 .phone-mockup__call--disabled { cursor: not-allowed; opacity: .65; box-shadow: none; }
 .phone-mockup small { margin-top: 15px; color: #919cb1; font-size: .7rem; }

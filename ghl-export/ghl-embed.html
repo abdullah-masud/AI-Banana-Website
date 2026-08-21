@@ -87,6 +87,7 @@ button, input:is([type="button"], [type="reset"], [type="submit"]) { appearance:
 .button--secondary { border-color: #cad1dc; background: var(--white); color: var(--navy); }
 .button--secondary:hover { border-color: var(--gold); box-shadow: 0 12px 30px rgba(15,34,95,.09); }
 .button--light { background: var(--white); color: var(--navy); box-shadow: 0 12px 34px rgba(0,0,0,.18); }
+.button--chat-trigger { appearance: none; position: relative; z-index: 1; cursor: pointer; pointer-events: auto; }
 
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease-premium), transform .8s var(--ease-premium); }
 .reveal--visible { opacity: 1; transform: translateY(0); }
@@ -273,7 +274,7 @@ button, input:is([type="button"], [type="reset"], [type="submit"]) { appearance:
 .voice-wave i { display: block; width: 3px; height: calc(8px + var(--h, 10px)); background: #72c3ff; border-radius: 4px; animation: voice 1.3s ease-in-out infinite alternate; }
 .voice-wave i:nth-child(3n) { --h: 24px; animation-delay: -.5s; }.voice-wave i:nth-child(4n) { --h: 14px; animation-delay: -.8s; }.voice-wave i:nth-child(5n) { --h: 32px; animation-delay: -.2s; }
 @keyframes voice { to { transform: scaleY(.45); opacity: .5; } }
-.phone-mockup__call { display: grid; place-items: center; width: 54px; height: 54px; margin-top: 31px; border-radius: 50%; background: #40b879; color: white; box-shadow: 0 10px 24px rgba(64,184,121,.32); }
+.phone-mockup__call { appearance: none; display: grid; place-items: center; width: 54px; height: 54px; margin-top: 31px; padding: 0; border: 0; border-radius: 50%; background: #40b879; color: white; cursor: pointer; box-shadow: 0 10px 24px rgba(64,184,121,.32); }
 .phone-mockup__call svg { width: 21px; }
 .phone-mockup__call--disabled { cursor: not-allowed; opacity: .65; box-shadow: none; }
 .phone-mockup small { margin-top: 15px; color: #919cb1; font-size: .7rem; }
@@ -410,6 +411,8 @@ button, input:is([type="button"], [type="reset"], [type="submit"]) { appearance:
 .final-cta__content > p:not(.eyebrow) { max-width: 590px; margin: 27px auto 32px; color: #e2eaf3; line-height: 1.7; }
 .final-cta__content > small { display: block; margin-top: 18px; color: #c4d0df; font-size: .74rem; }
 .final-cta__actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px; }
+.final-cta__actions .button--light { background: linear-gradient(135deg, #eba91b, #c88517); color: var(--dark-navy); border-color: transparent; box-shadow: 0 12px 30px rgba(222,160,27,.22); }
+.final-cta__actions .button--light:hover { box-shadow: 0 16px 38px rgba(222,160,27,.34); }
 .final-cta__actions .button--secondary { border-color: rgba(255,255,255,.42); color: #fff; background: rgba(255,255,255,.08); }
 .final-cta__actions .button--secondary:hover { border-color: rgba(255,255,255,.7); background: rgba(255,255,255,.13); }
 
@@ -751,6 +754,146 @@ button, input:is([type="button"], [type="reset"], [type="submit"]) { appearance:
       }, delay);
     });
     window.setTimeout(showCompletedState, 4000);
+  }
+
+  let chatOpenRetry;
+  const openLeadConnectorChat = () => {
+    if (chatOpenRetry) window.clearTimeout(chatOpenRetry);
+    let attempts = 0;
+
+    const openIfReady = () => {
+      const openWidget = window.leadConnector?.chatWidget?.openWidget;
+      if (typeof openWidget !== 'function') return false;
+      try { openWidget(); return true; }
+      catch { return false; }
+    };
+    const stopWaiting = () => {
+      window.removeEventListener('LC_chatWidgetLoaded', handleWidgetLoaded);
+      if (chatOpenRetry) window.clearTimeout(chatOpenRetry);
+      chatOpenRetry = undefined;
+    };
+    const tryToOpen = () => {
+      attempts += 1;
+      if (openIfReady() || attempts >= 20) { stopWaiting(); return; }
+      chatOpenRetry = window.setTimeout(tryToOpen, 150);
+    };
+    function handleWidgetLoaded() { if (openIfReady()) stopWaiting(); }
+
+    window.addEventListener('LC_chatWidgetLoaded', handleWidgetLoaded);
+    tryToOpen();
+  };
+
+  root.querySelectorAll('.button--disabled').forEach((element) => {
+    if (element.textContent?.trim() !== 'Book Through Our AI Receptionist') return;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `${element.className.replace('button--disabled', '').trim()} button--chat-trigger`;
+    button.innerHTML = element.innerHTML;
+    button.addEventListener('click', openLeadConnectorChat);
+    element.replaceWith(button);
+  });
+
+  const aiReceptionistWidgetId = '6a871a3c07754ad08addc62b';
+  const aiReceptionistScriptId = 'leadconnector-ai-receptionist-loader';
+  let aiReceptionistOpen;
+  let aiReceptionistLoadPromise;
+  let generalChatApi;
+
+  const findAiReceptionistWidget = () => [...document.querySelectorAll('chat-widget')]
+    .find((widget) => widget.widgetId === aiReceptionistWidgetId);
+
+  const hideAiReceptionistWhenClosed = (widget) => {
+    const handleClosed = () => {
+      if (widget.dataset.active === 'false') {
+        widget.style.display = 'none';
+        window.removeEventListener('lc-widget-closed', handleClosed);
+      }
+    };
+    window.addEventListener('lc-widget-closed', handleClosed);
+  };
+
+  const showAndOpenAiReceptionist = () => {
+    const widget = findAiReceptionistWidget();
+    if (!widget || !aiReceptionistOpen) return;
+    generalChatApi?.closeWidget?.();
+    widget.style.display = '';
+    aiReceptionistOpen();
+    hideAiReceptionistWhenClosed(widget);
+  };
+
+  const loadAiReceptionistWidget = () => {
+    if (aiReceptionistLoadPromise) return aiReceptionistLoadPromise;
+
+    aiReceptionistLoadPromise = new Promise((resolve) => {
+      generalChatApi = window.leadConnector?.chatWidget;
+      const concealWidget = new MutationObserver(() => {
+        const widget = findAiReceptionistWidget();
+        if (widget) {
+          widget.style.display = 'none';
+          concealWidget.disconnect();
+        }
+      });
+      concealWidget.observe(document.body, { childList: true, subtree: true });
+
+      const timeoutId = window.setTimeout(() => {
+        concealWidget.disconnect();
+        window.removeEventListener('LC_chatWidgetLoaded', handleLoaded);
+        resolve();
+      }, 12000);
+
+      function handleLoaded(event) {
+        const eventRoot = event.detail?.getRootNode?.();
+        const widget = eventRoot instanceof ShadowRoot ? eventRoot.host : findAiReceptionistWidget();
+        if (widget?.widgetId !== aiReceptionistWidgetId) return;
+
+        aiReceptionistOpen = window.leadConnector?.chatWidget?.openWidget;
+        if (generalChatApi && window.leadConnector) window.leadConnector.chatWidget = generalChatApi;
+        widget.style.display = 'none';
+        window.clearTimeout(timeoutId);
+        concealWidget.disconnect();
+        window.removeEventListener('LC_chatWidgetLoaded', handleLoaded);
+        resolve();
+      }
+
+      window.addEventListener('LC_chatWidgetLoaded', handleLoaded);
+      if (!document.getElementById(aiReceptionistScriptId)) {
+        const script = document.createElement('script');
+        script.id = aiReceptionistScriptId;
+        script.src = 'https://widgets.leadconnectorhq.com/loader.js';
+        script.async = true;
+        script.dataset.resourcesUrl = 'https://widgets.leadconnectorhq.com/chat-widget/loader.js';
+        script.dataset.widgetId = aiReceptionistWidgetId;
+        document.body.appendChild(script);
+      }
+    });
+
+    return aiReceptionistLoadPromise;
+  };
+
+  const openAiReceptionistWidget = () => {
+    if (aiReceptionistOpen) { showAndOpenAiReceptionist(); return; }
+    void loadAiReceptionistWidget().then(showAndOpenAiReceptionist);
+  };
+
+  root.querySelectorAll('.button--disabled').forEach((element) => {
+    if (element.textContent?.trim() !== 'Call the AI Receptionist') return;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = element.className.replace('button--disabled', '').trim();
+    button.innerHTML = element.innerHTML;
+    button.addEventListener('click', openAiReceptionistWidget);
+    element.replaceWith(button);
+  });
+
+  const phoneCall = root.querySelector('.phone-mockup__call--disabled');
+  if (phoneCall) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = phoneCall.className.replace('phone-mockup__call--disabled', '').trim();
+    button.setAttribute('aria-label', 'Call the AI Receptionist');
+    button.innerHTML = phoneCall.innerHTML;
+    button.addEventListener('click', openAiReceptionistWidget);
+    phoneCall.replaceWith(button);
   }
 
   const loadChat = () => window.setTimeout(() => {
