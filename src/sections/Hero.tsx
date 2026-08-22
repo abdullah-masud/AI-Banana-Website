@@ -50,7 +50,7 @@ export function Hero() {
         </div>
         <div className="hero__visual" aria-label="AI Banana workforce officer">
           <div className="hero__image-shell">
-            <img src={siteConfig.assets.heroCharacter} alt="AI Banana, a professional AI Workforce Officer" width="820" height="1230" fetchPriority="high" decoding="async" />
+            <img src={siteConfig.assets.heroCharacter} alt="AI Banana, a professional robotic AI Workforce Officer" width="820" height="1230" fetchPriority="high" decoding="async" />
             <div className={`hero__status-card hero__status-card--top ${workforceOnline ? 'hero__status-card--online' : ''}`} aria-live="polite">
               <span className="status-pulse" />
               <div><small>AI Workforce</small><strong>{workforceOnline ? siteConfig.heroActivation.completedLabel : siteConfig.heroActivation.activatingLabel}</strong></div>

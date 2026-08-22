@@ -21,7 +21,7 @@ The export currently uses the stable production alias `https://ai-banana-website
 Before decommissioning or deleting the Vercel project, upload these files to the GoHighLevel media library or another permanent public host and replace their URLs in `ghl-embed.html`:
 
 - `logo-BAC3H4wn.webp`
-- `hero-character-DQ68wfoP.webp`
+- `Master-Character-Render-v2.png` is served from the AI Banana Vercel deployment at `https://ai-banana-website.vercel.app/Master-Character-Render-v2.png`.
 - `AI-Banana_ChiefOfStaff-BP51GpVw.png`
 - `team-savannah-D9Derr6-.webp`
 - `team-lashay-TgSSKDes.webp`

@@ -39,7 +39,6 @@ export function Challenge() {
               <p>Ready to take your call</p>
               <div className="voice-wave" aria-hidden="true">{Array.from({ length: 17 }, (_, i) => <i key={i} />)}</div>
               <button type="button" className="phone-mockup__call" aria-label="Call the AI Receptionist" onClick={openAiReceptionistWidget}><PhoneCall fill="currentColor" /></button>
-              <small>{siteConfig.contact.demoPhone}</small>
             </div>
           </div>
           <div className="challenge-phone-wrap__ring" />

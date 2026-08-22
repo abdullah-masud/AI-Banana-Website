@@ -1,4 +1,4 @@
-import heroCharacter from '../assets/hero-character.webp'
+import heroCharacter from '../../assets/characters/Master Character Render v2.png'
 import transparentLogo from '../assets/logo.webp'
 import ashtonPortrait from '../assets/team-ashton.webp'
 import carterPortrait from '../assets/team-carter.webp'
@@ -19,7 +19,7 @@ export const siteConfig = {
   assets: {
     logo: transparentLogo,
     heroCharacter,
-    masterRenderSource: 'assets/characters/Master Character Render v1.png',
+    masterRenderSource: 'assets/characters/Master Character Render v2.png',
     chiefOfStaffPortrait,
   },
   links: {
@@ -38,7 +38,6 @@ export const siteConfig = {
     phoneHref: 'tel:+18559706262',
     email: 'connect@get-aibanana.com',
     location: 'Based in Charlotte, NC — serving businesses nationwide.',
-    demoPhone: import.meta.env.VITE_DEMO_PHONE_DISPLAY?.trim() || 'Demo number coming soon',
   },
   booking: {
     primaryLabel: 'Book Your Free Growth Session',
